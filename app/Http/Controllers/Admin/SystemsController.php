@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\System;
 
 class SystemsController extends Controller
 {
-    /public function create() {
+    public function create() {
     	return view('admin.system.add');
     }
     public function store(Request $request) {

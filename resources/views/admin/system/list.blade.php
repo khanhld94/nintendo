@@ -1,14 +1,19 @@
 @extends ('admin.master')
 @section ('content')
-  <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">System
-                            <small>List</small>
-                        </h1>
-                    </div>
-                    @include ('admin.layouts.flash_message')
+<section id="main-content">
+            <section class="wrapper">
+               <!--overview start-->
+               @include ('admin.layouts.flash_message')
+               <div class="row">
+                  <div class="col-lg-12">
+                     <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+                     <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                        <li><i class="fa fa-laptop"></i>System List</li>
+                     </ol>
+                  </div>
+                  <div class="col-lg-12">
+                    
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -34,9 +39,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
+                  </div>
+               </div>
+               
+            </section>
+         </section> 
 @endsection

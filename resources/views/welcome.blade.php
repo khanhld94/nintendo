@@ -319,6 +319,7 @@
                           <span>Dashboard</span>
                       </a>
                   </li>
+                  @include('admin.layouts.flash_message')
                   <li class="sub-menu">
                       <a href="javascript:;" class="">
                           <i class="icon_document_alt"></i>

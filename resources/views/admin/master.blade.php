@@ -259,7 +259,7 @@
                      <span class="profile-ava">
                      <img alt="" src="{{ asset('img/avatar1_small.jpg') }}">
                      </span>
-                     <span class="username">Jenifer Smith</span>
+                     <span class="username">{{ Auth::user()->name }}</span>
                      <b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu extended logout">
@@ -268,22 +268,15 @@
                            <a href="#"><i class="icon_profile"></i> My Profile</a>
                         </li>
                         <li>
-                           <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                        </li>
-                        <li>
-                           <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                        </li>
-                        <li>
-                           <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                        </li>
-                        <li>
-                           <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                        </li>
-                        <li>
-                           <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                        </li>
-                        <li>
-                           <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                           <a href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                              <i class="icon_key_alt">Log Out</i>
+                          </a>
+
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                          </form>
                         </li>
                      </ul>
                   </li>
@@ -326,39 +319,25 @@
                         <li><a class="" href="{{ route('admin.system.index') }}">List System</a></li>
                      </ul>
                   </li>
-                  <li>
-                     <a class="" href="widgets.html">
-                     <i class="icon_genius"></i>
-                     <span>Widgets</span>
-                     </a>
-                  </li>
-                  <li>                     
-                     <a class="" href="#">
-                     <i class="icon_piechart"></i>
-                     <span>Charts</span>
-                     </a>
-                  </li>
                   <li class="sub-menu">
-                     <a href="javascript:;" class="">
-                     <i class="icon_table"></i>
-                     <span>Tables</span>
+                     <a href="#" class="">
+                     <i class="fa fa-folder-open-o"></i>
+                     <span>Categories</span>
                      <span class="menu-arrow arrow_carrot-right"></span>
                      </a>
                      <ul class="sub">
-                        <li><a class="" href="basic_table.html">Basic Table</a></li>
+                        <li><a class="" href="#">Create Category</a></li>
+                        <li><a class="" href="#">List Categories</a></li>
                      </ul>
                   </li>
                   <li class="sub-menu">
-                     <a href="javascript:;" class="">
-                     <i class="icon_documents_alt"></i>
-                     <span>Pages</span>
+                     <a href="#" class="">
+                     <i class="fa fa-user"></i>
+                     <span>User</span>
                      <span class="menu-arrow arrow_carrot-right"></span>
                      </a>
                      <ul class="sub">
-                        <li><a class="" href="profile.html">Profile</a></li>
-                        <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                        <li><a class="" href="blank.html">Blank Page</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
+                        <li><a class="" href="#">List User</a></li>
                      </ul>
                   </li>
                </ul>

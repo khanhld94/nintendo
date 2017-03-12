@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix'=>'admin'], function () {
+Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
 	Route::group(['prefix'=>'system'], function () {
 		Route::get('create',['as'=>'admin.system.create', 'uses'=>'Admin\SystemsController@create']);
@@ -33,3 +32,6 @@ Route::group(['prefix'=>'admin'], function () {
 		Route::post('edit/{id}',['as'=>'admin.game.update', 'uses'=>'Admin\GamesController@update']);
 	});	
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
