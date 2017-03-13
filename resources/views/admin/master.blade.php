@@ -268,10 +268,11 @@
                            <a href="#"><i class="icon_profile"></i> My Profile</a>
                         </li>
                         <li>
+                           
                            <a href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
-                              <i class="icon_key_alt">Log Out</i>
+                           <i class="icon_key_alt"></i> Log Out
                           </a>
 
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
