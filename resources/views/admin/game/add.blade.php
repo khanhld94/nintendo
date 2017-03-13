@@ -33,6 +33,11 @@
                                 <label>Game Content</label>
                                 <textarea class="form-control" rows="3" name="content"></textarea>
                             </div>
+                            <div>
+                              @foreach ($categories as $category)
+                                <label class="checkbox-inline"><input type="checkbox" name="categories[]" id="{{ $category->id }}" value="{{ $category->id }}">{{ $category->name }}</label>
+                              @endforeach
+                            </div>
                             <div class="form-group">
                                 <label>Images</label>
                                 <input type="file" name="fImages">

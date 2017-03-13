@@ -32,7 +32,7 @@
                         <div>{!! $game->name !!}</div>
                         <div>
                            <div class="row" style="display: inline-block;">
-                              <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary">Play</button></a>
+                              <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" data-resource="{{ $game->resource }}">Play</button></a>
                            </div>
                            <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
                               aria-labelledby="myModalLabel" aria-hidden="true">
@@ -58,43 +58,6 @@
                                           <img src="//www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" alt="Get Adobe Flash player"/>
                                           </a>
                                        </div>
-                                       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-                                       <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-                                       <script type="text/javascript">
-                                          var resizeOwnEmulator = function(width, height)
-                                          {
-                                              var emulator = $('#emulator');
-                                              emulator.css('width', width);
-                                              emulator.css('height', height);
-                                          }
-                                          
-                                          $(function()
-                                          {
-                                              function embed()
-                                              {
-                                                  var emulator = $('#emulator');
-                                                  if(emulator)
-                                                  {
-                                                      var flashvars = 
-                                                      {
-                                                          system : 'nes',
-                                                          url : '{{ asset('roms/Super Mario Bros.zip') }}'
-                                                      };
-                                                      var params = {};
-                                                      var attributes = {};
-                                          
-                                                      params.allowscriptaccess = 'sameDomain';
-                                                      params.allowFullScreen = 'true';
-                                                      params.allowFullScreenInteractive = 'true';
-                                          
-                                                      swfobject.embedSWF('{{ asset('flash/Nesbox.swf') }}', 'emulator', '640', '480', '11.2.0', 'flash/expressInstall.swf', flashvars, params, attributes);
-                                                  }
-                                              }
-                                          
-                                              embed();
-                                          });
-                                          
-                                       </script>
                                     </div>
                                     <!-- Modal Footer -->
                                  </div>
@@ -114,4 +77,39 @@
       </div>
    </section>
 </section>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script type="text/javascript">
+  var resizeOwnEmulator = function(width, height)
+  {
+      var emulator = $('#emulator');
+      emulator.css('width', width);
+      emulator.css('height', height);
+  }
+  $(document).ready(function() {
+    $(".play-button").click(function(){
+        //alert($(this).data('resource'));
+        var emulator = $('#emulator');
+        if(emulator)
+        {
+            var link = '/roms/'+ $(this).data('resource');
+            var flashvars = 
+            {
+                system : 'nes',
+                url : encodeURI(link)
+            };
+            var params = {};
+            var attributes = {};
+            console.log(link);
+            params.allowscriptaccess = 'sameDomain';
+            params.allowFullScreen = 'true';
+            params.allowFullScreenInteractive = 'true';
+
+            swfobject.embedSWF('{{ asset('flash/Nesbox.swf') }}', 'emulator', '640', '480', '11.2.0', 'flash/expressInstall.swf', flashvars, params, attributes);
+        }
+    }); 
+  });
+
+  
+</script>
 @endsection
