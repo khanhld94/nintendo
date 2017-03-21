@@ -11,4 +11,8 @@ class Game extends Model
     public function categories(){
     	return $this->belongsToMany('\App\Category');
     }
+
+    public function system(){
+    	return $this->belongsTo('\App\System');
+    }
 }

@@ -38,6 +38,9 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function ()
 		Route::get('destroy/{id}',['as'=>'admin.category.destroy', 'uses'=>'Admin\CategoriesController@destroy']);
 		Route::get('edit/{id}',['as'=>'admin.category.edit', 'uses'=>'Admin\CategoriesController@edit']);
 		Route::post('edit/{id}',['as'=>'admin.category.update', 'uses'=>'Admin\CategoriesController@update']);
+	});
+	Route::group(['prefix'=>'user'], function () {
+		Route::get('index',['as'=>'admin.user.index', 'uses'=>'Admin\UsersController@index']);
 	});	
 });
 Auth::routes();

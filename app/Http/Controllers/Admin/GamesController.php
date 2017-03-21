@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Game;
 use App\System;
 use App\Category;
+use File;
 
 class GamesController extends Controller
 {
     public function create(){
     	$systems = System::all();
         $categories = Category::all();
-    	return view('admin.game.add',compact('systems','categories'));
+    	return view('admin.game.create',compact('systems','categories'));
     }
     public function store(Request $request){
     	$this->validate($request,[
@@ -38,8 +39,9 @@ class GamesController extends Controller
 
     }
     public function index(){
+        $systems = System::all();
     	$games = Game::all();
-    	return view('admin.game.list',compact('games'));
+    	return view('admin.game.index',compact('games','systems'));
     }
     public function edit($id){
         $systems = System::all();
@@ -49,7 +51,12 @@ class GamesController extends Controller
     public function update(){
 
     }
-    public function destroy(){
-
+    public function destroy($id){
+        $game = Game::find($id);
+        File::delete('resource/upload/game_image/'.$game->image);
+        File::delete('roms/'.$game->resource);
+        $game->categories()->detach();
+        $game->delete();
+        return redirect()->route('admin.game.index')->with('flash_message','Game have been deleted');
     }
 }
