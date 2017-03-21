@@ -28,6 +28,7 @@
       <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
       <link href="{{ asset('/css/xcharts.min.css') }}" rel=" stylesheet">
       <link href="{{ asset('/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
+      <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
       <!-- =======================================================
          Theme Name: NiceAdmin
          Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -327,8 +328,7 @@
                      <span class="menu-arrow arrow_carrot-right"></span>
                      </a>
                      <ul class="sub">
-                        <li><a class="" href="#">Create Category</a></li>
-                        <li><a class="" href="#">List Categories</a></li>
+                        <li><a class="" href="{{ route('admin.category.index') }}">List Categories</a></li>
                      </ul>
                   </li>
                   <li class="sub-menu">

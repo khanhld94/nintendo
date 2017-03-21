@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\System;
+use File;
 
 class SystemsController extends Controller
 {
@@ -37,8 +38,8 @@ class SystemsController extends Controller
     }
     public function destroy($id) {
     	$system = System::find($id);
-    	File::delete('resource/upload/system_image'.$system->image);
+    	File::delete('resource/upload/system_image/'.$system->image);
     	$system->delete($id);
-    	return redirect()->route('admin.system.index')->with('flash_message','Deleted');
+    	return redirect()->route('admin.system.index')->with('flash_message','System Have Been Deleted');
     }
 }
