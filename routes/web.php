@@ -11,7 +11,9 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+	$games = \App\Game::all();
+	$top_games = \App\Game::limit(6)->offset(6)->get();
+    return view('welcome',compact('games','top_games'));
 });
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
