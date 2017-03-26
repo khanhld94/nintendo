@@ -27,7 +27,7 @@
         <div id="site-content">
             <header class="site-header">
                 <div class="container">
-                    <a href="index.html" id="branding">
+                    <a href="{{ route('home') }}" id="branding">
                         <img src="images/logo.png" alt="" class="logo">
                         <div class="logo-copy">
                             <h1 class="site-title">Company Name</h1>
@@ -78,7 +78,7 @@
                                                         <img src="/resource/upload/game_image/{{ $game->image }}"></td>
                                                     <td class="col-md-8" id="top_game_title">
                                                        <div id="game_name">
-                                                         {{ $game->name }}
+                                                         <a href="{{ route('games.show', $game->id )}}">{{ $game->name }}</a>
                                                        </div>
                                                        <div>
                                                          System: {{ $game->system->name }}
@@ -96,7 +96,7 @@
                                 @foreach ($games as $game)
                                     <div class="movie">
                                         <figure class="movie-poster"><img src="/resource/upload/game_image/{{ $game->image }}" alt="#"></figure>
-                                        <div class="movie-title"><a href="#">{{ $game->name }}</a></div>
+                                        <div class="movie-title"><a href="{{ route('games.show', $game->id )}}">{{ $game->name }}</a></div>
                                     </div>
                                 @endforeach
                             </div> <!-- .movie-list -->
