@@ -1,3 +1,10 @@
+@font-face {
+    font-family: fipps;
+    src: url('/fonts/Fipps-Regular.otf');
+}
+
+/* home page */
+
 .modal-content{
 	text-align: center;
 }
@@ -5,7 +12,6 @@
 	margin-left: 12px;
 }
 #top_game {
-	border-bottom: 1px solid gray;
 }
 #top_game_image {
 	width: 80px;
@@ -22,7 +28,6 @@
 #top_game_title {
 	padding-top: 10px;
 	color: gray;
-	float: left;
 }
 #game_name {
 	color: #339966;
@@ -49,7 +54,7 @@
     width: 695px;
     height: 550px;
     display: block;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 5px 0 0px 10px;
 }
 #emulator {
@@ -62,6 +67,7 @@
     display: block;
     margin: 20px auto;
     padding: 5px 0 0px 10px;
+    border: 2px solid #dddddd;
 }
 .top-bar{
     font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
@@ -69,3 +75,47 @@
     margin: 0;
     padding: 0;
 }
+.topgame_table{
+    border: 1px solid #dddddd;
+    background-color: wheat;
+}
+
+.content_title {
+    background: #222222;
+    width: 1104px;
+    height: 53px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: fipps;
+    color: white;
+}
+
+/* nav bar */
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding-right: 15px;
+  padding-left: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-left: 5px;
+  width: auto;
+}
+
+.example3 .navbar-brand {
+  height: 80px;
+}
+
+.example3 .nav >li >a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.example3 .navbar-toggle {
+  padding: 10px;
+  margin: 25px 15px 25px 0;
+}
+
+
