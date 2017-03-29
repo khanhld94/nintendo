@@ -9,6 +9,12 @@ class GamesController extends Controller
 {
     public function show($id){
     	$game = Game::find($id);
-    	return view('games.show',compact('game'));
+    	$games = Game::all();
+    	$top_games = \App\Game::limit(7)->get();
+    	return view('games.show',compact('game','top_games','games'));
+    }
+
+    public function comment($id){
+    	$game = Game::find($id);
     }
 }

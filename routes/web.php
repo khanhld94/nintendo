@@ -12,8 +12,8 @@
 */
 Route::get('/', function () {
 	$games = \App\Game::all();
-	$top_games = \App\Game::limit(6)->offset(6)->get();
-    return view('welcome',compact('games','top_games'));
+	$top_games = \App\Game::limit(7)->get();
+    return view('home',compact('games','top_games'));
 })->name('home');
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
@@ -49,3 +49,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
+Route::post('/game/{id}/show,',['as' => 'games.comment', 'uses' => 'GamesController@comment']);

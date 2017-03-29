@@ -15,4 +15,7 @@ class Game extends Model
     public function system(){
     	return $this->belongsTo('\App\System');
     }
+    public function comments(){
+    	return $this->hasMany('\App\Comment');
+    }
 }

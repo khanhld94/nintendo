@@ -237,7 +237,7 @@ ul, ol {
 
 a {
   text-decoration: none;
-  color: #ffaa3c; }
+  color: #fd4800; }
 
 address {
   font-style: normal; }
@@ -289,9 +289,10 @@ form textarea {
     border-radius: 5px;
     overflow: hidden; }
   .slider img {
+    max-height: 100%;
     max-width: 100%;
+    height: 100%;
     width: 100%;
-    height: auto;
     display: block; }
   .slider .flex-direction-nav {
     list-style: none;
@@ -570,8 +571,8 @@ ul.arrow {
     height: 0; }
 
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -5px;
+  margin-right: -5px;
   *zoom: 1; }
   .row:after {
     content: " ";
