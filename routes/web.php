@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-	$games = \App\Game::all();
-	$top_games = \App\Game::limit(7)->get();
-    return view('home',compact('games','top_games'));
-})->name('home');
+Route::get('/',['as'=>'home', 'uses'=>'static_pages_controller@home']);
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
 	Route::group(['prefix'=>'system'], function () {
@@ -47,6 +43,5 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function ()
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
-Route::post('/game/{id}/show,',['as' => 'games.comment', 'uses' => 'GamesController@comment']);
+Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 'uses' => 'GamesController@comment']);
