@@ -10,7 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',['as'=>'home', 'uses'=>'static_pages_controller@home']);
+/* user side router */
+Route::get('/',['as'=>'home', 'uses'=>'StaticPagesController@home']);
+Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
+Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 
+	'uses' => 'GamesController@comment']);
+Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
+
+/* admin side router */
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
 	Route::group(['prefix'=>'system'], function () {
@@ -43,5 +50,4 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function ()
 });
 Auth::routes();
 
-Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
-Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 'uses' => 'GamesController@comment']);
+

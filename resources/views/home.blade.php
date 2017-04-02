@@ -1,5 +1,4 @@
-@extends('welcome')
-
+@extends('master')
 @section('content')
 <main class="main-content">
     <div class="container">
@@ -52,8 +51,10 @@
                         </div>
                     @endforeach
                 </div> <!-- .movie-list -->
+                <div  class="col-md-12" style="text-align: center;">
+                  {{ $games->render() }}
+                </div>
             </div> <!-- .row -->
-
             <div class="content_title">New Games</div>
             <div class="row">
                 <div class="col-md-3">
