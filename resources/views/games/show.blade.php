@@ -3,9 +3,12 @@
   <main class="main-content">
    <div class="container">
       <div class="page">
-         <div class="breadcrumbs">
-            <a href="review.html">{{ $game->system->name }}</a>
-            <span>{{ $game->name }}</span>
+         <div class="top_breakcum">
+            <a href="review.html">{{ $game->system->fullname }}</a>
+            <span>> {{ $game->name }}</span>
+            <a id="popover" class="btn" rel="popover" data-content="" title="How To Play">
+                <img src="{{ asset('images/tipicon.png') }}">
+            </a>
          </div>
          <div class="content">
             <!-- .row -->
@@ -92,6 +95,7 @@
    <!-- .container -->
 
 </main>
+@include ('layouts.footer')
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
@@ -131,5 +135,11 @@
         
         embed();
     });
+
+    var image = '<img src="{{ asset('images/hint.png') }}>';
+    $(function () {
+      $('#popover').popover({placement: 'bottom', content: '<img src="{{ asset('images/hint.png') }}" style="max-width:100%; width: 100%;max-height:100%; height:100%;">', html: true});
+    });
+
 </script>
 @endsection

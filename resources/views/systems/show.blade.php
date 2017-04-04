@@ -3,8 +3,8 @@
 	<main class="main-content">
    <div class="container">
       <div class="page">
-         <div class="breadcrumbs">
-            <a href="#">{{ $system->name }}</a>
+         <div class="breadcrumbs" style="font-family: fipps; margin-left: 25px;">
+            <a href="#">{{ $system->fullname }}</a>
          </div>
          <div class="content">
             <!-- .row -->
@@ -49,4 +49,5 @@
    <!-- .container -->
 
 </main>
+@include ('layouts.footer')
 @endsection
