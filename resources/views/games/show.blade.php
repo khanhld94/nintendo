@@ -23,6 +23,11 @@
                   </a>
                </div>
             </div>
+            @include('layouts.share', [
+                'url' => request()->fullUrl(),
+                'description' => 'This is really cool link',
+                'image' => '{{ $game->image }}'
+            ])
             <div class="sub-title">Description</div>
             <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
 
@@ -139,6 +144,30 @@
     var image = '<img src="{{ asset('images/hint.png') }}>';
     $(function () {
       $('#popover').popover({placement: 'bottom', content: '<img src="{{ asset('images/hint.png') }}" style="max-width:100%; width: 100%;max-height:100%; height:100%;">', html: true});
+    });
+
+
+    var popupSize = {
+        width: 780,
+        height: 550
+    };
+
+    $(document).on('click', '.social-buttons > a', function(e){
+
+        var
+            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+        var popup = window.open($(this).prop('href'), 'social',
+            'width='+popupSize.width+',height='+popupSize.height+
+            ',left='+verticalPos+',top='+horisontalPos+
+            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+        if (popup) {
+            popup.focus();
+            e.preventDefault();
+        }
+
     });
 
 </script>
