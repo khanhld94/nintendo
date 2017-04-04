@@ -11,8 +11,7 @@
 .game-tab {
 	margin-left: 12px;
 }
-#top_game {
-}
+
 #top_game_image {
 	width: 80px;
 	height: 60px;
@@ -88,6 +87,23 @@
     text-align: center;
     font-family: fipps;
     color: white;
+}
+
+.top_breakcum {
+  font-family: fipps;
+  display: inline;
+  margin-left: 25px;
+}
+.top_breakcum img {
+  width: 50px;
+  height: 50px;
+}
+
+#popover {
+  margin-right: 100px;
+}
+.content {
+  margin-top: 10px;
 }
 
 /* nav bar */
@@ -193,4 +209,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.popover{
+    max-width:1000px !important;
+}
+.game_tip {
+  width: 100px;
+  height: 100px;
+}
+.game_tip img {
+  max-width: 100%;
+  width: 100%;
 }
