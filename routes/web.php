@@ -16,6 +16,7 @@ Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@
 Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 
 	'uses' => 'GamesController@comment']);
 Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
+Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsController@search' ]);
 
 /* admin side router */
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {

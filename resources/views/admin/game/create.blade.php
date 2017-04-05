@@ -12,15 +12,15 @@
             </ol>
          </div>
          <div class="col-lg-12">
-            <form action="{!! route('admin.game.store') !!}" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <form action="{{ route('admin.game.store') }}" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="col-lg-7" style="padding-bottom:120px">
                  <div class="form-group">
                     <label>System</label>
                     <select class="form-control" name="system_id">
                        <option value="0">Please Choose System</option>
                        @foreach ($systems as $item)
-                       <option value="{!! $item['id'] !!}">{!! $item['name'] !!}</option>
+                       <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
                        @endforeach
                     </select>
                  </div>

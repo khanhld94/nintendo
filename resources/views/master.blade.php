@@ -33,6 +33,9 @@
     </head>
     <body>
       @include ('layouts.header')
+      @if (Session::has('flash_message'))
+        <div class="alert alert-danger" style="text-align: center">{{ Session::get('flash_message') }}</div>
+      @endif
       <div id="site-content">
           @yield('content')
       </div>
