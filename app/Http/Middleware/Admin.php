@@ -21,6 +21,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/home')->with('flash_message','You dont have permission to do this');
+        return redirect('/')->with('flash_message','You dont have permission to do this');
     }
 }

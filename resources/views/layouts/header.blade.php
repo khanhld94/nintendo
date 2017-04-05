@@ -11,17 +11,26 @@
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('/images/gamepad.png')}}" alt="Nintendo World">
         </a>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Nintendo World</a></li>
+            <li><a href="{{ route('home') }}">Nintendo World</a></li>
         </ul>
       </div>
       <div id="navbar3" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
+          <li style="padding-top: 26px;padding-right: 10px; display: block;">
+            <form action="{{ route('games.search') }}" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <button type="submit" class="btn btn-default pull-right" style="padding: 3px 12px; margin-left: 5px;">
+                <span class="fa fa-search"></span>
+              </button>
+              <input type="text" class="form-control" name="search" id="search" placeholder="search" style="width:200px;">
+            </form>
+          </li>
           <li class="active"><a href="#">Home</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">System <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               @foreach ($systems as $system)
-                 <li><a href="{{ route('systems.show', $system->id) }}">{{ $system->name }}</a></li>
+                 <li><a href="{{ route('systems.show', $system->id) }}">{{ $system->fullname }}</a></li>
                  <li class="divider"></li>
               @endforeach
             </ul>

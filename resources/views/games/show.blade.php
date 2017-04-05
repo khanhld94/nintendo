@@ -4,7 +4,8 @@
    <div class="container">
       <div class="page">
          <div class="top_breakcum">
-            <a href="review.html">{{ $game->system->fullname }}</a>
+            <i class="fa fa-gamepad fa-3x"></i>
+            <a href="#">{{ $game->system->fullname }}</a>
             <span>> {{ $game->name }}</span>
             <a id="popover" class="btn" rel="popover" data-content="" title="How To Play">
                 <img src="{{ asset('images/tipicon.png') }}">

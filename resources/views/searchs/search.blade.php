@@ -1,16 +1,18 @@
 @extends ('master')
-@section ('content')
-	<main class="main-content">
+@section('content')
+	<main class="main-content" style="height: 100vh;">
    <div class="container">
       <div class="page">
          <div class="breadcrumbs" style="font-family: fipps; margin-left: 25px;">
-            <i class="fa fa-gamepad fa-3x"></i>
-            <a href="#">{{ $system->fullname }}</a>
+            <a href="#">Search Result</a>
          </div>
          <div class="content">
             <!-- .row -->
+         @if ($search_results == null || $search_results->count() == 0) 
+         	<h3>No result found</h3>
+         @else
           <div class="col-md-9" id="left-content">
-          	@foreach ($games as $game)
+          	@foreach ($search_results as $game)
 				<div class="col-sm-6 col-md-3">
 					<div class="image_container">
 						<a href="{{ route('games.show', $game->id )}}"><img src="/resource/upload/game_image/{{ $game->image }}" alt="{{ $game->name}}"></a>
@@ -20,7 +22,7 @@
 					</div>
 				</div>
 			@endforeach
-			<div class="col-md-12" style="text-align: center;">{{ $games->render() }}</div>
+{{-- 			<div class="col-md-12" style="text-align: center;">{{ $games->render() }}</div> --}}
           </div>
           <div class="col-md-3"> 
               <div class="row">
@@ -45,10 +47,10 @@
                   </table>
               </div>
           </div>
+          @endif
       </div>
    </div>
-   <!-- .container -->
-
-</main>
+   </div>
+   </main>
 @include ('layouts.footer')
 @endsection
