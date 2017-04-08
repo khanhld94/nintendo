@@ -11,9 +11,10 @@ class GamesController extends Controller
 {	
     public function show($id){
     	$game = Game::find($id);
+        $comments = $game->comments()->paginate(5);
     	$games = Game::all();
     	$top_games = \App\Game::limit(7)->get();
-    	return view('games.show',compact('game','top_games','games'));
+    	return view('games.show',compact('game','top_games','games','comments'));
     }
 
     public function comment(Request $request, $id){
@@ -23,6 +24,6 @@ class GamesController extends Controller
     	$comment->game_id = $request->game_id;
     	$comment->body = $request->body;
     	$comment->save();
-    	return redirect()->route('games.show',$game->id);
+        return $comment;
     }
 }

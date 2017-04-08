@@ -1643,7 +1643,7 @@ ul.arrow {
       text-align: center;
       margin-bottom: 20px; }
       .movie-list .movie .movie-title a {
-        color: #84878d;
+        color: black;
         -webkit-transition: .3s ease;
                 transition: .3s ease; }
         .movie-list .movie .movie-title a:hover {

@@ -33,45 +33,56 @@
             <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
 
             <div>
+              <div>
+                <form action="{{ route('games.comment', $game->id) }}" method="POST" enctype="multipart/form-data" style="margin-left: 15px; margin-right: 15px;">
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                  <input type="hidden" name="game_id" value="{{ $game->id }}">
+                  <div class="form-group">
+                        <label>Leave Your Comment Here</label>
+                        <textarea class="form-control" rows="3" name="body" style="width: 688px;"></textarea>
+                  </div>
+                  @if( Auth::user())
+                    <button type="submit" id="submit">Submit</button>
+                  @else
+                    <a href=" {{ route('login') }}"><button>Login to comment</button></a>
+                  @endif
+                </form>
+              </div>
               <div class="col-sm-12">
                    <h3>Comment</h3>
               </div>
                 <!-- /col-sm-12 -->
              <!-- /row -->
-              @foreach ($game->comments as $comment)
-                <div class="col-sm-2">
-                   <div class="thumbnail">
-                      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                   </div>
-                   <!-- /thumbnail -->
+              <div class="col-sm-12" id="comment-panel">
+                @foreach ($comments as $comment)
+                <div>
+                  <div class="col-sm-2">
+                     <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                     </div>
+                     <!-- /thumbnail -->
+                  </div>
+                  <!-- /col-sm-1 -->
+                  <div class="col-sm-10">
+                     <div class="panel panel-default" style="width: 560px;">
+                        <div class="panel-heading">
+                           <strong>{{ $comment->user->name}}</strong> <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+                           <i class="fa fa-trash-o" style="float: right;"></i>
+                        </div>
+                        <div class="panel-body">
+                           {{ $comment->body }}
+                        </div>
+                        <!-- /panel-body -->
+                     </div>
+                     <!-- /panel panel-default -->
+                  </div>
                 </div>
-                <!-- /col-sm-1 -->
-                <div class="col-sm-10">
-                   <div class="panel panel-default">
-                      <div class="panel-heading">
-                         <strong>{{ $comment->user->name}}</strong> <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
-                      </div>
-                      <div class="panel-body">
-                         {{ $comment->body }}
-                      </div>
-                      <!-- /panel-body -->
-                   </div>
-                   <!-- /panel panel-default -->
-                </div>
-                <!-- /col-sm-5 -->
-              @endforeach
+                  <!-- /col-sm-5 -->
+                @endforeach
+              </div>
             </div>
-            <div>
-              <form action="{{ route('games.comment', $game->id) }}" method="POST" enctype="multipart/form-data" style="margin-left: 15px; margin-right: 15px;">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="game_id" value="{{ $game->id }}">
-                <div class="form-group">
-                      <label>Leave Your Comment Here</label>
-                      <textarea class="form-control" rows="3" name="body"></textarea>
-                </div>
-                <button type="submit">Submit</button>
-              </form>
-            </div>
+            <div>{{ $comments->links() }}</div>
+            
           </div>
           <div class="col-md-4"> 
               <div class="row">
@@ -168,6 +179,55 @@
             popup.focus();
             e.preventDefault();
         }
+
+    });
+    
+    
+
+    $(document).ready(function(){
+        $("#submit").click(function(e){
+            // $("#comment-panel").prepend(html);
+            $.ajaxSetup({
+               headers: { 'X-CSRF-Token' : $('input[name=_token]').attr('value') }
+            });
+            var body = $('textarea[name=body]').val();
+            var game_id = $('input[name=game_id]').val();
+            var uri = '{{ route('games.show', $game->id) }}'
+            var html = `<div class="col-sm-2">
+                             <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                             </div>
+                             <!-- /thumbnail -->
+                          </div>
+                          <!-- /col-sm-1 -->
+                          <div class="col-sm-10">
+                             <div class="panel panel-default" style="width: 560px";>
+                                <div class="panel-heading">
+                                   <strong>
+                                     @if (Auth::user())
+                                       {{ Auth::user()->name }}
+                                     @endif
+                                   </strong> <span class="text-muted">1 second a go</span>
+                                   <i class="fa fa-trash-o" style="float: right;"></i>
+                                </div>
+                                <div class="panel-body">` +
+                                  body
+                                +`</div>
+                             </div>
+                          </div>`;
+             e.preventDefault();
+             $.ajax({
+                url: uri ,
+                type: "post",
+                data: {'body':body,'game_id': game_id},
+                success: function(msg){
+                  $("#comment-panel").prepend(html);
+                },
+                error: function(data){
+                  alert('Comment cant be blank');
+                }
+              }); 
+        });
 
     });
 
