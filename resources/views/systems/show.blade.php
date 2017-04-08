@@ -9,46 +9,63 @@
          </div>
          <div class="content">
             <!-- .row -->
-          <div class="col-md-9" id="left-content">
-          	@foreach ($games as $game)
-				<div class="col-sm-6 col-md-3">
-					<div class="image_container">
-						<a href="{{ route('games.show', $game->id )}}"><img src="/resource/upload/game_image/{{ $game->image }}" alt="{{ $game->name}}"></a>
-						<div class="overlay">
-						  <div class="text">{{ $game->name }}</div>
-						</div>
-					</div>
-				</div>
-			@endforeach
-			<div class="col-md-12" style="text-align: center;">{{ $games->render() }}</div>
-          </div>
-          <div class="col-md-3"> 
-              <div class="row">
-                  <table class="table table-hover topgame_table">
-                      <tbody>
-                          <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
-                          @foreach ($top_games as $top_game)
-                              <tr class="col-md-12" id="top_game">
-                                  <td class="col-md-3" id="top_game_image">
-                                      <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
-                                  <td class="col-md-9" id="top_game_title">
-                                     <div id="game_name">
-                                       <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->name }}</a>
-                                     </div>
-                                     <div>
-                                       System: {{ $top_game->system->name }}
-                                     </div>
-                                  </td>
-                              </tr>
-                          @endforeach
-                      </tbody>
-                  </table>
-              </div>
-          </div>
+            <div class="col-md-9" id="left-content">
+                @if (count($games) > 0)
+                    <section class="games">
+                        @include('layouts.systemgame')
+                    </section>
+                @endif
+            </div>
+            <div class="col-md-3"> 
+                <div class="row">
+                    <table class="table table-hover topgame_table">
+                        <tbody>
+                            <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
+                            @foreach ($top_games as $top_game)
+                                <tr class="col-md-12" id="top_game">
+                                    <td class="col-md-3" id="top_game_image">
+                                        <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
+                                    <td class="col-md-9" id="top_game_title">
+                                       <div id="game_name">
+                                         <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->name }}</a>
+                                       </div>
+                                       <div>
+                                         System: {{ $top_game->system->name }}
+                                       </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
       </div>
    </div>
    <!-- .container -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+   <script type="text/javascript">
+     $(function() {
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
 
+            $('.pagination').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
+
+            var url = $(this).attr('href');  
+            getArticles(url);
+            window.history.pushState("", "", url);
+        });
+
+        function getArticles(url) {
+            $.ajax({
+                url : url  
+            }).done(function (data) {
+                $('.games').html(data);  
+            }).fail(function () {
+                alert('Games could not be loaded.');
+            });
+        }
+    });
+   </script>
 </main>
 @include ('layouts.footer')
 @endsection
