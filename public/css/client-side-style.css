@@ -1533,7 +1533,8 @@ ul.arrow {
 .section-title {
   font-size: 30px;
   font-size: 2em;
-  font-weight: 300; }
+  font-weight: 300; 
+  text-align: center;}
 
 .movie-schedule {
   list-style: none; }

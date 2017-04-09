@@ -53,35 +53,13 @@
               </div>
                 <!-- /col-sm-12 -->
              <!-- /row -->
-              <div class="col-sm-12" id="comment-panel">
-                @foreach ($comments as $comment)
-                <div>
-                  <div class="col-sm-2">
-                     <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                     </div>
-                     <!-- /thumbnail -->
-                  </div>
-                  <!-- /col-sm-1 -->
-                  <div class="col-sm-10">
-                     <div class="panel panel-default" style="width: 560px;">
-                        <div class="panel-heading">
-                           <strong>{{ $comment->user->name}}</strong> <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
-                           <i class="fa fa-trash-o" style="float: right;"></i>
-                        </div>
-                        <div class="panel-body">
-                           {{ $comment->body }}
-                        </div>
-                        <!-- /panel-body -->
-                     </div>
-                     <!-- /panel panel-default -->
-                  </div>
-                </div>
-                  <!-- /col-sm-5 -->
-                @endforeach
-              </div>
+              @if (count($games) > 0)
+                  <section class="comments">
+                      @include('layouts.comment')
+                  </section>
+              @endif
             </div>
-            <div>{{ $comments->links() }}</div>
+            
             
           </div>
           <div class="col-md-4"> 
@@ -229,6 +207,28 @@
               }); 
         });
 
+    });
+
+    $(function() {
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+
+            $('#pagination_link').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
+
+            var url = $(this).attr('href');  
+            getArticles(url);
+            window.history.pushState("", "", url);
+        });
+
+        function getArticles(url) {
+            $.ajax({
+                url : url  
+            }).done(function (data) {
+                $('.comments').html(data);  
+            }).fail(function () {
+                alert('Comments could not be loaded.');
+            });
+        }
     });
 
 </script>

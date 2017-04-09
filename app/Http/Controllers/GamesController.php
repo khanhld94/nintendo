@@ -9,9 +9,12 @@ use Auth;
 
 class GamesController extends Controller
 {	
-    public function show($id){
+    public function show(Request $request, $id){
     	$game = Game::find($id);
         $comments = $game->comments()->paginate(5);
+        if ($request->ajax()) {
+            return view('layouts.comment', ['comments' => $comments])->render();  
+        }
     	$games = Game::all();
     	$top_games = \App\Game::limit(7)->get();
     	return view('games.show',compact('game','top_games','games','comments'));
