@@ -43,23 +43,16 @@
         <div class="page"> --}}
             <div class="content_title">All Games</div>
             <div class="row">
-                <div class="movie-list">
-                    @foreach ($games as $game)
-                        <div class="movie">
-                            <figure class="movie-poster"><img src="/resource/upload/game_image/{{ $game->image }}" alt="#"></figure>
-                            <div class="movie-title"><a href="{{ route('games.show', $game->id )}}">{{ $game->name }}</a></div>
-                        </div>
-                    @endforeach
-                </div> <!-- .movie-list -->
-                <div  class="col-md-12" style="text-align: center;">
-                  {{ $games->render() }}
-                </div>
+                @if (count($games) > 0)
+                    <section class="games">
+                        @include('layouts.allgame')
+                    </section>
+                @endif
             </div> <!-- .row -->
             <div class="content_title">New Games</div>
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="section-title">December premiere</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <h2 class="section-title">Nes</h2>
                     <ul class="movie-schedule">
                         <li>
                             <div class="date">16/12</div>
@@ -80,8 +73,7 @@
                     </ul> <!-- .movie-schedule -->
                 </div>
                 <div class="col-md-3">
-                    <h2 class="section-title">November premiere</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <h2 class="section-title">Snes</h2>
                     <ul class="movie-schedule">
                         <li>
                             <div class="date">1</div>
@@ -102,8 +94,7 @@
                     </ul> <!-- .movie-schedule -->
                 </div>
                 <div class="col-md-3">
-                    <h2 class="section-title">October premiere</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <h2 class="section-title">Gba</h2>
                     <ul class="movie-schedule">
                         <li>
                             <div class="date">16/12</div>
@@ -124,8 +115,7 @@
                     </ul> <!-- .movie-schedule -->
                 </div>
                 <div class="col-md-3">
-                    <h2 class="section-title">October premiere</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <h2 class="section-title">Sega</h2>
                     <ul class="movie-schedule">
                         <li>
                             <div class="date">16/12</div>
@@ -149,5 +139,29 @@
         </div>
     </div> <!-- .container -->
 </main>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+
+            $('#pagination_link').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
+
+            var url = $(this).attr('href');  
+            getArticles(url);
+            window.history.pushState("", "", url);
+        });
+
+        function getArticles(url) {
+            $.ajax({
+                url : url  
+            }).done(function (data) {
+                $('.games').html(data);  
+            }).fail(function () {
+                alert('Games could not be loaded.');
+            });
+        }
+    });
+</script>
 @include ('layouts.footer')
 @endsection
