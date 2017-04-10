@@ -30,7 +30,7 @@
                 'image' => '{{ $game->image }}'
             ])
             <div class="sub-title">Description</div>
-            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            <p class="description">{{ $game->description }}</p>
 
             <div>
               <div>
@@ -48,7 +48,7 @@
                   @endif
                 </form>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-12" style="margin-top: 30px;">
                    <h3>Comment</h3>
               </div>
                 <!-- /col-sm-12 -->
@@ -59,8 +59,6 @@
                   </section>
               @endif
             </div>
-            
-            
           </div>
           <div class="col-md-4"> 
               <div class="row">
@@ -92,6 +90,7 @@
 </main>
 @include ('layouts.footer')
 
+<!-- Emulator javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
@@ -130,6 +129,8 @@
         
         embed();
     });
+  
+  <!-- Emulator javascript -->
 
     var image = '<img src="{{ asset('images/hint.png') }}>';
     $(function () {
@@ -160,11 +161,10 @@
 
     });
     
-    
+    <!-- Comment javascript -->
 
     $(document).ready(function(){
         $("#submit").click(function(e){
-            // $("#comment-panel").prepend(html);
             $.ajaxSetup({
                headers: { 'X-CSRF-Token' : $('input[name=_token]').attr('value') }
             });
@@ -173,7 +173,9 @@
             var uri = '{{ route('games.show', $game->id) }}'
             var html = `<div class="col-sm-2">
                              <div class="thumbnail">
-                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                @if (Auth::user())
+                                  <img class="img-responsive user-photo" src="/resource/upload/user_avatar/{{ Auth::user()->avatar }}">
+                                @endif
                              </div>
                              <!-- /thumbnail -->
                           </div>
@@ -200,6 +202,7 @@
                 data: {'body':body,'game_id': game_id},
                 success: function(msg){
                   $("#comment-panel").prepend(html);
+                  $('textarea[name=body]').val("");
                 },
                 error: function(data){
                   alert('Comment cant be blank');
@@ -213,7 +216,7 @@
         $('body').on('click', '.pagination a', function(e) {
             e.preventDefault();
 
-            $('#pagination_link').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
+            $('.pagination').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
 
             var url = $(this).attr('href');  
             getArticles(url);

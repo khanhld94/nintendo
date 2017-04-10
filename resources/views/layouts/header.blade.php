@@ -56,7 +56,10 @@
             </li>
           @else
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><div class="header-userpic">
+                  <img src="/resource/upload/user_avatar/{{ Auth::user()->avatar }}" class="img-responsive" alt="">
+                </div> 
+                <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{ route('users.show', Auth::user()->id )}}">Profile</a></li>
                   <li class="divider"></li>
