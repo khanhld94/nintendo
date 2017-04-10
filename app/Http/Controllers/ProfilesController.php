@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use File;
+use Auth;
 
 class ProfilesController extends Controller
 {	
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 	public function show($id){
        $user = User::find($id);
        return view('users.show',compact('user'));
@@ -15,7 +22,12 @@ class ProfilesController extends Controller
 	}
 	public function edit($id){
 		$user = User::find($id);
-		return view('users.edit',compact('user'));
+        if (Auth::user()->id != $user->id ) {
+            return redirect()->route('home')->with('flash_message','You dont have permission');
+        }
+        else {
+		    return view('users.edit',compact('user'));
+        }
 	}
     public function update(Request $request, $id){
     	$user = User::find($id);

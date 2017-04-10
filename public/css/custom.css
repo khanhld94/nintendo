@@ -133,7 +133,20 @@
   padding: 10px;
   margin: 25px 15px 25px 0;
 }
-
+/* header */
+.header-userpic {
+  height: 50px;
+  width: 50px;
+  float: left;
+  padding-bottom: 10px;
+}
+.header-userpic img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
 
 /* comment form */
 

@@ -11,7 +11,8 @@ class GamesController extends Controller
 {	
     public function show(Request $request, $id){
     	$game = Game::find($id);
-        $comments = $game->comments()->paginate(5);
+        $comments = $game->comments()->orderBy('created_at', 'desc')
+                ->paginate(5);
         if ($request->ajax()) {
             return view('layouts.comment', ['comments' => $comments])->render();  
         }
