@@ -21,6 +21,10 @@
                                <input class="form-control" name="name" placeholder="Please Enter System Name" />
                             </div>
                             <div class="form-group">
+                               <label>Full Name</label>
+                               <input class="form-control" name="fullname" placeholder="Please Enter System Full Name" />
+                            </div>
+                            <div class="form-group">
                                <label>System Description</label>
                                <textarea class="form-control" rows="3" name="description"></textarea>
                             </div>

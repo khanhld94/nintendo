@@ -15,6 +15,8 @@ Route::get('/',['as'=>'home', 'uses'=>'StaticPagesController@home']);
 Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
 Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 
 	'uses' => 'GamesController@comment']);
+Route::get('/games/{id}/show/comment/{comment_id}/delete',['middleware' => ['auth'] , 'as' => 'games.comment.delete', 
+	'uses' => 'GamesController@delete_comment']);
 Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
 Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsController@search' ]);
 Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesController@show']);

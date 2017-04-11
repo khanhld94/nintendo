@@ -20,7 +20,7 @@
                 <div class="row">
                     <table class="table table-hover topgame_table">
                         <tbody>
-                            <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
+                            <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top {{ $system->name }} games</h4></td></tr>
                             @foreach ($top_games as $top_game)
                                 <tr class="col-md-12" id="top_game">
                                     <td class="col-md-3" id="top_game_image">
