@@ -14,7 +14,7 @@ class GamesController extends Controller
         $comments = $game->comments()->orderBy('created_at', 'desc')
                 ->paginate(5);
         if ($request->ajax()) {
-            return view('layouts.comment', ['comments' => $comments])->render();  
+            return view('layouts.comment', ['game' => $game ,'comments' => $comments])->render();  
         }
     	$games = Game::all();
     	$top_games = \App\Game::limit(7)->get();
@@ -29,5 +29,17 @@ class GamesController extends Controller
     	$comment->body = $request->body;
     	$comment->save();
         return $comment;
+    }
+
+    public function delete_comment(Request $request, $id, $comment_id) {
+        $game = Game::find($id);
+        $comment = Comment::find($comment_id);
+        if (Auth::user()->id != $comment->user->id )
+        {
+            return redirect()->route('home')->with('flash_message','You dont have permission');
+        }else {
+            $comment->delete();
+            return redirect()->route('games.show',$game->id);
+        }
     }
 }

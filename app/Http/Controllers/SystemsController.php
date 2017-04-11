@@ -11,7 +11,7 @@ class SystemsController extends Controller
     public function show (Request $request,$id) {
     	$system = System::find($id);
     	$games = $system->games()->paginate(12);
-    	$top_games = Game::limit(7)->get();
+    	$top_games = $system->games()->limit(7)->get();
     	if ($request->ajax()) {
             return view('layouts.systemgame', ['games' => $games])->render();  
         }

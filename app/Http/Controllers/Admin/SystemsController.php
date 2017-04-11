@@ -21,6 +21,7 @@ class SystemsController extends Controller
     	$file_name = $request->file('fImages')->getClientOriginalName();
     	$system = new System();
     	$system->name = $request->name;
+        $system->fullname = $request->fullname;
     	$system->description = $request->description;
     	$system->image = $file_name;
     	$request->file('fImages')->move('resource/upload/system_image/',$file_name);

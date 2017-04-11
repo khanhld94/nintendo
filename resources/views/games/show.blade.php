@@ -234,5 +234,44 @@
         }
     });
 
+    <!-- delete_comment -->
+    $(document).on('click', '.delete_button', function(e){
+
+        var confirmation = confirm("are you sure");
+
+        if (confirmation) {
+          comment_id = $(this).val();
+          var delete_url = '{{ route('games.comment.delete', ['id'=>$game->id,'comment_id'=> 0 ]) }}'
+          e.preventDefault();
+           $.ajax({
+              url: delete_url.replace(/0/, comment_id) ,
+              type: "get",
+              success: function(msg){
+                $("#"+ comment_id).remove();
+              },
+              error: function(data){
+                alert('Cant not delete comment');
+              }
+            }); 
+      }
+    });
+
+
+    // $(document).on('click', '.delete_button', function(e){
+    //     comment_id = $(this).val();
+    //     var delete_url = '{{ route('games.comment.delete', ['id'=>$game->id,'comment_id'=> 0 ]) }}'
+    //     e.preventDefault();
+    //      $.ajax({
+    //         url: delete_url.replace(/0/, comment_id) ,
+    //         type: "get",
+    //         success: function(msg){
+    //           $("#"+ comment_id).remove();
+    //         },
+    //         error: function(data){
+    //           alert('Cant not delete comment');
+    //         }
+    //       }); 
+    // });
+
 </script>
 @endsection

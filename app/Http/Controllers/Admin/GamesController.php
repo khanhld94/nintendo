@@ -22,8 +22,8 @@ class GamesController extends Controller
     		'description' => 'required',
     		'system_id' => 'required'
     		]);
-    	$file_image = $request->file('fImages')->getClientOriginalName();
-    	$file_resource = $request->file('gResource')->getClientOriginalName();
+    	$file_image = time() . '-' .$request->file('fImages')->getClientOriginalName();
+    	$file_resource = time() . '-' .$request->file('gResource')->getClientOriginalName();
     	$game = new Game();
     	$game->name = $request->name;
     	$game->content = $request->content;
