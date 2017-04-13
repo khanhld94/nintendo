@@ -12,6 +12,11 @@
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Loading main css file -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+        <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/client-side-style.css') }}">
@@ -42,6 +47,7 @@
       <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
       <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/plugins.js') }}"></script>
+      <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}"></script>
       <script src="{{ asset('js/custom.js') }}"></script>   
     </body>
 
