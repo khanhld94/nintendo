@@ -24,6 +24,7 @@
                   </a>
                </div>
             </div>
+            @include('laravelLikeComment::like', ['like_item_id' => $game->id ])
             @include('layouts.share', [
                 'url' => request()->fullUrl(),
                 'description' => 'This is really cool link',
