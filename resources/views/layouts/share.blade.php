@@ -1,4 +1,4 @@
-<div class="social-buttons" style="margin-left: 550px;">
+<div class="social-buttons">
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
        target="_blank">
        <i class="fa fa-facebook-square fa-3x"></i>
