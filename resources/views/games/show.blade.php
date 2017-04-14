@@ -24,15 +24,9 @@
                   </a>
                </div>
             </div>
-            @include('laravelLikeComment::like', ['like_item_id' => $game->id ])
-            @include('layouts.share', [
-                'url' => request()->fullUrl(),
-                'description' => 'This is really cool link',
-                'image' => '{{ $game->image }}'
-            ])
+            
             <div class="sub-title">Description</div>
-            <p class="description">{{ $game->description }}</p>
-
+            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             <div>
               <div>
                 <form action="{{ route('games.comment', $game->id) }}" method="POST" enctype="multipart/form-data" style="margin-left: 15px; margin-right: 15px;">
@@ -66,16 +60,17 @@
                   <table class="table table-hover topgame_table">
                       <tbody>
                           <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
-                          @foreach ($top_games as $top_game)
+                          @foreach ($top_vote_games as $vote)
                               <tr class="col-md-12" id="top_game">
                                   <td class="col-md-3" id="top_game_image">
-                                      <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
+                                      <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                   <td class="col-md-9" id="top_game_title">
                                      <div id="game_name">
-                                       <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->name }}</a>
+                                       <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
                                      </div>
                                      <div>
-                                       System: {{ $top_game->system->name }}
+                                       <i class="icon disabled outline laravelLike-icon thumbs up"></i>
+                                       {{ $vote->total_like }}
                                      </div>
                                   </td>
                               </tr>
@@ -83,6 +78,29 @@
                       </tbody>
                   </table>
               </div>
+              <div class="panel-group">
+                  <div class="panel panel-primary" style="text-align: center;">
+                    <div class="panel-heading" style="background-color: #339966">Do you like this game</div>
+                    <div class="panel-body">
+                      @include('laravelLikeComment::like', ['like_item_id' => $game->id ])
+                    </div>
+                  </div>
+              </div>
+
+              <div class="panel-group">
+                  <div class="panel panel-primary" style="text-align: center;">
+                    <div class="panel-heading" style="background-color: #339966">Share this game to your friend</div>
+                    <div class="panel-body">
+                      @include('layouts.share', [
+                          'url' => request()->fullUrl(),
+                          'description' => 'This is really cool link',
+                          'image' => '{{ $game->image }}'
+                      ])
+                    </div>
+                  </div>
+              </div>
+              
+              
           </div>
       </div>
    </div>

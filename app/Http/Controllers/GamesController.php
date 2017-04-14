@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Game;
 use \App\Comment;
 use Auth;
+use \App\TotalVote;
 
 class GamesController extends Controller
 {	
@@ -17,8 +18,8 @@ class GamesController extends Controller
             return view('layouts.comment', ['game' => $game ,'comments' => $comments])->render();  
         }
     	$games = Game::all();
-    	$top_games = \App\Game::limit(7)->get();
-    	return view('games.show',compact('game','top_games','games','comments'));
+    	$top_vote_games = TotalVote::orderBy('total_like', 'esc')->limit(7)->get();
+    	return view('games.show',compact('game','top_vote_games','games','comments'));
     }
 
     public function comment(Request $request, $id){

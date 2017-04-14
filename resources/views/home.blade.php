@@ -18,16 +18,17 @@
                         <table class="table table-hover topgame_table">
                             <tbody>
                                 <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
-                                @foreach ($top_games as $game)
+                                @foreach ($top_vote_games as $vote)
                                     <tr class="col-md-12" id="top_game">
                                         <td class="col-md-3" id="top_game_image">
-                                            <img src="/resource/upload/game_image/{{ $game->image }}"></td>
+                                            <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                         <td class="col-md-9" id="top_game_title">
                                            <div id="game_name">
-                                             <a href="{{ route('games.show', $game->id )}}">{{ $game->name }}</a>
+                                             <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
                                            </div>
                                            <div>
-                                             System: {{ $game->system->name }}
+                                             <i class="icon disabled outline laravelLike-icon thumbs up"></i>
+                                             {{ $vote->total_like }}
                                            </div>
                                         </td>
                                     </tr>
