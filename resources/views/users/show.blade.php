@@ -45,10 +45,45 @@
 		</div>
 		<div class="col-md-9">
             <div class="profile-content">
-			   Some user related content goes here...
+            	<div class="panel-group">
+                  <div class="panel panel-primary" style="text-align: center;">
+                    <div class="panel-heading" style="background-color: #339966">Game You Like</div>
+                    <div class="panel-body">
+                      @if (count($user_votes) > 0)
+	                    <section class="games">
+	                        @include('layouts.profilegamelist')
+	                    </section>
+	                  @endif
+                    </div>
+                  </div>
+              </div>
             </div>
 		</div>
 	</div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+
+            $('#pagination_link').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="{{ asset('/images/loading.gif')}}" />');
+
+            var url = $(this).attr('href');  
+            getArticles(url);
+            window.history.pushState("", "", url);
+        });
+
+        function getArticles(url) {
+            $.ajax({
+                url : url  
+            }).done(function (data) {
+                $('.games').html(data);  
+            }).fail(function () {
+                alert('Games could not be loaded.');
+            });
+        }
+    });
+</script>
 @include ('layouts.footer')
 @endsection

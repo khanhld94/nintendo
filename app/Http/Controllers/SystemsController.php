@@ -13,7 +13,7 @@ class SystemsController extends Controller
     	$games = $system->games()->paginate(12);
     	$top_games = $system->games()->limit(7)->get();
     	if ($request->ajax()) {
-            return view('layouts.systemgame', ['games' => $games])->render();  
+            return view('layouts.games', ['games' => $games])->render();  
         }
     	return view('systems.show',compact('system','top_games','games'));
     }

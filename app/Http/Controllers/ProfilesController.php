@@ -15,9 +15,13 @@ class ProfilesController extends Controller
         $this->middleware('auth');
     }
 
-	public function show($id){
+	public function show(Request $request,$id){
        $user = User::find($id);
-       return view('users.show',compact('user'));
+       $user_votes = $user->votes()->where('vote',1)->paginate(8);
+       if ($request->ajax()) {
+            return view('layouts.profilegamelist', ['user_votes' => $user_votes])->render();  
+       }
+       return view('users.show',compact('user','user_votes'));
 
 	}
 	public function edit($id){
