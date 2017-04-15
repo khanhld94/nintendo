@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use \App\Game;
 use \App\TotalVote;
+use \App\Vote;
+use \App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -59,14 +61,17 @@ class DatabaseSeeder extends Seeder
 	    //     	'category_id' => '1'
 	    //     ]);
      //    }
-    	$faker = Faker\Factory::create();
-    	$games = Game::all();
-    	foreach ($games as $game) {
-    		TotalVote::create([
-    			'item_id' => $game->id,
-    			'total_like' => $faker->numberBetween(1,100),
-    			'total_dislike' => $faker->numberBetween(1,20)
-    		]);
+    	$users = User::all();
+    	foreach ($users as $user) {
+    		$games = Game::all();
+	    	foreach ($games as $game) {
+	    		Vote::create([
+	    			'user_id' => $user->id,
+	    			'item_id' => $game->id,
+	    			'vote' => 1 
+	    		]);
+	    	}
     	}
+    	
     }
 }

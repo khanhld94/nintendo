@@ -22,6 +22,7 @@ Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsControll
 Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesController@show']);
 Route::get('/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'ProfilesController@edit']);
 Route::post('/users/{id}/edit', ['as' => 'users.update', 'uses' => 'ProfilesController@update']);
+Route::get('/categories/{id}/show', ['as' => 'categories.show','uses' => 'CategoriesController@show']);
 
 /* admin side router */
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
