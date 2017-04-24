@@ -52,92 +52,38 @@
             </div> <!-- .row -->
             <div class="content_title">New Games</div>
             <div class="row">
-                <div class="col-md-3">
-                    <h2 class="section-title">Nes</h2>
-                    <ul class="movie-schedule">
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                    </ul> <!-- .movie-schedule -->
+              @foreach ($systems as $system)
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="box">
+                        <div class="box-icon">
+                            <img src="/resource/upload/system_image/{{ $system->image}}"></span>
+                        </div>
+                        <div class="info">
+                            <h4 class="text-center">{{ $system->fullname }}</h4>
+                            @foreach( $system->games()->orderBy('created_at','esc')->limit(4)->get() as $key => $value )
+                            <div class="well well-sm">
+                            <div class="row">
+                                <div class="col-xs-5 col-md-4 text-center" style="height: 50px;">
+                                    <a href="{{ route('games.show', $value->id )}}"><img src="/resource/upload/game_image/{{ $value->image }}" alt="{{ $value->name }}"
+                                        class="img-rounded img-responsive" style="height: 100%;" />
+                                    </a>
+                                </div>
+                                <div class="col-xs-7 col-md-8 section-box">
+                                    <h5 style="text-align: center;">
+                                        {{ $value->name }}
+                                    </h5>
+                                </div>
+                            </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <a href="{{ route('systems.show',$system->id) }}"><button class="btn btn-info">View more</button></a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <h2 class="section-title">Snes</h2>
-                    <ul class="movie-schedule">
-                        <li>
-                            <div class="date">1</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">2</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">3</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">4</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                    </ul> <!-- .movie-schedule -->
-                </div>
-                <div class="col-md-3">
-                    <h2 class="section-title">Gba</h2>
-                    <ul class="movie-schedule">
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                    </ul> <!-- .movie-schedule -->
-                </div>
-                <div class="col-md-3">
-                    <h2 class="section-title">Sega</h2>
-                    <ul class="movie-schedule">
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                        <li>
-                            <div class="date">16/12</div>
-                            <h2 class="entry-title"><a href="#">Perspiciatis unde omnis</a></h2>
-                        </li>
-                    </ul> <!-- .movie-schedule -->
-                </div>
+              @endforeach 
             </div>
         </div>
+      </div>
     </div> <!-- .container -->
 </main>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>

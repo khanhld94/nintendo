@@ -12,7 +12,7 @@
             <div class="col-md-9" id="left-content">
                 @if (count($games) > 0)
                     <section class="games">
-                        @include('layouts.systemgame')
+                        @include('layouts.games')
                     </section>
                 @endif
             </div>

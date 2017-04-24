@@ -23,6 +23,7 @@
       <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
       <link href="{{ asset('/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}">
       <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
       <!-- =======================================================
          Theme Name: NiceAdmin
@@ -355,6 +356,8 @@
       <!-- nice scroll -->
       <script src="{{ asset('/js/jquery.scrollTo.min.js') }}"></script>
       <script src="{{ asset('/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+      <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+      <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
       <!-- charts scripts -->
       <!-- jQuery full calendar -->
       <!--script for this page only-->

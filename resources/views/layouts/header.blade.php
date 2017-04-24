@@ -39,7 +39,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               @foreach ($categories as $category)
-                 <li><a href="#">{{ $category->name }}</a></li>
+                 <li><a href="{{ route('categories.show', $category->id )}}">{{ $category->name }}</a></li>
                  <li class="divider"></li>
               @endforeach
             </ul>

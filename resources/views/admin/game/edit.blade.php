@@ -13,8 +13,8 @@
              </ol>
           </div>
           <div class="col-lg-12">
-              <div class="col-lg-7" style="padding-bottom:120px">
-                <form action="{!! route('admin.game.store') !!}" method="POST" enctype="multipart/form-data">
+            <form action="{!! route('admin.game.store') !!}" method="POST" enctype="multipart/form-data">
+                <div class="col-lg-7" style="padding-bottom:120px">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <div class="form-group">
                         <label>System</label>
@@ -30,18 +30,7 @@
                         <input class="form-control" name="name" placeholder="Please Enter Gamename" 
                           value="{!! old('name'),isset($game) ? $game['name'] : null !!}" />
                     </div>
-                    <div class="form-group">
-                        <label>Game Content</label>
-                        <textarea class="form-control" rows="3" name="content">{!! old('content'),isset($game) ? $game['content'] : null !!}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Images</label>
-                        <input type="file" name="fImages">
-                    </div>
-                    <div class="form-group">
-                        <label>Resources</label>
-                        <input type="file" name="gResource">
-                    </div>
+                    
                     <div class="form-group">
                         <label>Game Description</label>
                         <textarea class="form-control" rows="3" name="description">
@@ -50,8 +39,18 @@
                     </div>
                     <button type="submit" class="btn btn-default">Edit</button>
                     <button type="reset" class="btn btn-default">Reset</button>
-                <form>
-            </div>
+                </div>
+                <div class="col-lg-5">
+                   <div class="form-group">
+                        <label>Images</label>
+                        <input type="file" name="fImages" value="{!! old('fImages'),isset($game) ? $game['image'] : null !!}">
+                    </div>
+                    <div class="form-group">
+                      <label>Resources</label>
+                      <input type="file" name="gResource" value="{!! old('gResource'),isset($game) ? $game['resource'] : null !!}">
+                    </div>
+               </div>
+            <form>
           </div>
        </div>
        

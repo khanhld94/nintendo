@@ -5,6 +5,7 @@ use \App\Game;
 use \App\TotalVote;
 use \App\Vote;
 use \App\User;
+use \App\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -61,17 +62,31 @@ class DatabaseSeeder extends Seeder
 	    //     	'category_id' => '1'
 	    //     ]);
      //    }
-    	$users = User::all();
-    	foreach ($users as $user) {
-    		$games = Game::all();
-	    	foreach ($games as $game) {
-	    		Vote::create([
-	    			'user_id' => $user->id,
-	    			'item_id' => $game->id,
-	    			'vote' => 1 
-	    		]);
-	    	}
-    	}
+    	// $games = Game::all();
+    	// $faker = Faker\Factory::create();
+    	// foreach ($games as $game) {
+    	// 	ToTalVote::create([
+    	// 		'item_id' => $game->id,
+    	// 		'total_like' => $faker->numberBetween(1,100),
+    	// 		'total_dislike' => $faker->numberBetween(1,10),
+    	// 	]);
+    	// }
+    $faker = Faker\Factory::create();
+    foreach (range(1,10) as $index) {
+        $user = User::create([
+            'name' => $faker->name,
+            'email' => $faker->email,
+            'password' => bcrypt('secret'),
+        ]);
+        $games = Game::all();
+        foreach ($games as $key => $game) {
+            Comment::create([
+                'game_id' => $game->id,
+                'user_id' => $user->id,
+                'body' => $faker->word
+            ]);
+        }
+    }
     	
     }
 }

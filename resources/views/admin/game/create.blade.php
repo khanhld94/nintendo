@@ -12,6 +12,7 @@
             </ol>
          </div>
          <div class="col-lg-12">
+            @include('admin.layouts.error')
             <form action="{{ route('admin.game.store') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="col-lg-7" style="padding-bottom:120px">
@@ -27,10 +28,6 @@
                  <div class="form-group">
                     <label>Name</label>
                     <input class="form-control" name="name" placeholder="Please Enter Gamename" />
-                 </div>
-                 <div class="form-group">
-                    <label>Game Content</label>
-                    <textarea class="form-control" rows="3" name="content"></textarea>
                  </div>
                  <div>
                     <label>Game Category</label><br>

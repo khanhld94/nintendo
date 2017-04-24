@@ -4,7 +4,7 @@
    <section class="wrapper">
       <!--overview start-->
       <div class="row">
-      @include ('admin.layouts.error')
+      @include ('admin.layouts.flash_message')
       <div class="col-lg-12">
          <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
          <ol class="breadcrumb">
@@ -14,20 +14,20 @@
       </div>
       <div class="game-tab">
          <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li class="active"><a data-toggle="tab" href="#home">All Game</a></li>
             @foreach ($systems as $system)
             <li><a data-toggle="tab" href="#{{$system->id}}">{{ $system->name }}</a></li>
             @endforeach
          </ul>
          <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
-               <h3>All Games</h3>
                <div class="col-lg-12">
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                      <thead>
                         <tr align="center">
                            <th>ID</th>
                            <th>Name</th>
+                           <th>Play</th>
                            <th>Description</th>
                            <th>Image</th>
                            <th>Delete</th>
@@ -39,17 +39,62 @@
                         <tr class="odd gradeX" align="center">
                            <td>{!! $game->id !!}</td>
                            <td>
-                              <div>{!! $game->name !!}</div>
-                              <div>
-                                 <div class="row" style="display: inline-block;">
-                                    <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" data-sys="{{$game->system->name}}" data-resource="{{ $game->resource }}">Play</button></a>
-                                 </div>
+                             {!! $game->name !!}
+                           </td>
+                           <td>
+                             <div class="row" style="display: inline-block;">
+                                <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" data-sys="{{$game->system->name}}" data-resource="{{ $game->resource }}">Play</button></a>
+                             </div>
+                            </td>
+                           <td>
+                            <!-- Trigger the modal with a button -->
+                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal_{{$game->id}}">Show Description</button>
+
+                              <!-- Modal -->
+                              <div id="myModal_{{$game->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Description</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>{!! $game->description !!}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn{!! $game->description !!}-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                            </td>
-                           <td>{!! $game->description !!}</td>
-                           <td><img src="/resource/upload/game_image/{!! $game->image !!}" style="max-height: 100px; max-width: 100px;"></td>
+                           <td>
+                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#my_{{$game->id}}">Show Image</button>
+
+                              <!-- Modal -->
+                              <div id="my_{{$game->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Image</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p><img src="/resource/upload/game_image/{!! $game->image !!}" style="max-height: 100%; max-width: 100%;"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn{!! $game->description !!}-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ route('admin.game.destroy', $game->id )}}"> Delete</a></td>
-                           <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                           <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ route('admin.game.edit', $game->id) }}">Edit</a></td>
                         </tr>
                         @endforeach
                      </tbody>
@@ -58,9 +103,8 @@
             </div>
             @foreach ($systems as $system)
             <div id="{{$system->id}}" class="tab-pane fade">
-               <h3>{{ $system->name }}</h3>
                <div class="col-lg-12">
-                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <table class="table table-striped table-bordered table-hover" id="dataTables-{{$system}}">
                      <thead>
                         <tr align="center">
                            <th>ID</th>
@@ -76,17 +120,40 @@
                         <tr class="odd gradeX" align="center">
                            <td>{!! $systemgame->id !!}</td>
                            <td>
-                              <div>{!! $systemgame->name !!}</div>
-                              <div>
-                                 <div class="row" style="display: inline-block;">
-                                    <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" data-sys="{{$systemgame->system->name}}" data-resource="{{ $systemgame->resource }}">Play</button></a>
-                                 </div>
+                              {!! $systemgame->name !!}
+                           </td>
+                           <td>
+                             <div class="row" style="display: inline-block;">
+                                <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" data-sys="{{$systemgame->system->name}}" data-resource="{{ $systemgame->resource }}">Play</button></a>
+                             </div>
+                           </td>
+                           <td>
+                            <!-- Trigger the modal with a button -->
+                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal_{{$systemgame->id}}">Show Description</button>
+
+                              <!-- Modal -->
+                              <div id="myModal_{{$systemgame->id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Description</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>{!! $systemgame->description !!}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn{!! $systemgame->description !!}-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                            </td>
-                           <td>{!! $systemgame->description !!}</td>
                            <td><img src="/resource/upload/game_image/{!! $systemgame->image !!}" style="max-height: 100px; max-width: 100px;"></td>
                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{ route('admin.game.destroy', $systemgame->id )}}"> Delete</a></td>
-                           <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                           <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ route('admin.game.edit', $systemgame->id) }}">Edit</a></td>
                         </tr>
                         @endforeach
                      </tbody>
@@ -157,8 +224,11 @@
              swfobject.embedSWF('{{ asset('flash/Nesbox.swf') }}', 'emulator', '640', '480', '11.2.0', 'flash/expressInstall.swf', flashvars, params, attributes);
          }
      }); 
+
+
    });
-   
-   
+   $(document).ready(function() {
+      $('#dataTables-example').DataTable();
+   });
 </script>
 @endsection

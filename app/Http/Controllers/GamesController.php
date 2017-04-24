@@ -19,7 +19,19 @@ class GamesController extends Controller
         }
     	$games = Game::all();
     	$top_vote_games = TotalVote::orderBy('total_like', 'esc')->limit(7)->get();
-    	return view('games.show',compact('game','top_vote_games','games','comments'));
+        if ($game->system->name == 'gba') {
+            return view('games.gb',compact('game','top_vote_games','games','comments'));
+        }
+        elseif ($game->system->name == 'sega') {
+    	    return view('games.sega',compact('game','top_vote_games','games','comments'));
+        }
+        elseif ($game->system->name == 'nes')
+        {
+            return view('games.nes',compact('game','top_vote_games','games','comments'));
+        }
+        else {
+            return view('games.snes',compact('game','top_vote_games','games','comments'));
+        }
     }
 
     public function comment(Request $request, $id){

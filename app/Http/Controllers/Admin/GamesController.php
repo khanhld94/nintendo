@@ -20,13 +20,14 @@ class GamesController extends Controller
     	$this->validate($request,[
     		'name' => 'required',
     		'description' => 'required',
-    		'system_id' => 'required'
+    		'system_id' => 'required',
+            'image' => 'required',
+            'resource' => 'required'
     		]);
     	$file_image = time() . '-' .$request->file('fImages')->getClientOriginalName();
     	$file_resource = time() . '-' .$request->file('gResource')->getClientOriginalName();
     	$game = new Game();
     	$game->name = $request->name;
-    	$game->content = $request->content;
     	$game->description = $request->description;
     	$game->system_id = $request->system_id;
     	$game->image = $file_image;

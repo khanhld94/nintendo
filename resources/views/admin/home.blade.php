@@ -45,7 +45,7 @@
                      <div class="info-box green-bg">
                         <i class="fa fa-cubes"></i>
                         <div class="count">1.426</div>
-                        <div class="title">Stock</div>
+                        <div class="title">Visit</div>
                      </div>
                      <!--/.info-box-->         
                   </div>
