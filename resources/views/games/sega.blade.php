@@ -1,5 +1,22 @@
 @extends ('master')
 @section ('content')
+  <style type="text/css">
+    /* nes - snes game page */
+    .game-content {
+        background-image: url('/dummy/tv.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 695px;
+        height: 516px;
+        display: block;
+        margin: 0px auto;
+        padding: 5px 0 0px 10px;
+    }
+    #emulator {
+        margin-top: 27px;
+        margin-left: 18px;
+    }
+  </style>
   <main class="main-content">
    <div class="container">
       <div class="page">
@@ -25,8 +42,14 @@
                </div>
             </div>
             
-            <div class="sub-title">Description</div>
-            <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <div class="panel-group" style="margin-top: 30px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
+                <div class="panel panel-primary" style="text-align: center;">
+                  <div class="panel-heading" style="background-color: #339966">Description</div>
+                  <div class="panel-body">
+                    {{ $game->description }}
+                  </div>
+                </div>
+            </div>
             <div>
               <div>
                 <form action="{{ route('games.comment', $game->id) }}" method="POST" enctype="multipart/form-data" style="margin-left: 15px; margin-right: 15px;">

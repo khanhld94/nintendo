@@ -16,9 +16,8 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->longText('content');
             $table->string('image');
-            $table->string('description');
+            $table->text('description');
             $table->string('resource');
             $table->integer('system_id')->unsigned();
             $table->foreign('system_id')->references('id')->on('systems')->onDelete('cascade');
