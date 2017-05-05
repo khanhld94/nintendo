@@ -11,6 +11,11 @@
 |
 */
 /* user side router */
+Route::post('/language', array (
+	'as' => 'language',
+	'Middleware' => 'LanguageSwitcher',
+	'uses' => 'LanguageController@index',
+));
 Route::get('/',['as'=>'home', 'uses'=>'StaticPagesController@home']);
 Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
 Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 

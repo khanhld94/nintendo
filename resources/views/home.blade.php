@@ -17,14 +17,20 @@
                     <div class="row">
                         <table class="table table-hover topgame_table">
                             <tbody>
-                                <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
+                                <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >{{ trans('translate.topgame')}}</h4></td></tr>
                                 @foreach ($top_vote_games as $vote)
                                     <tr class="col-md-12" id="top_game">
                                         <td class="col-md-3" id="top_game_image">
                                             <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                         <td class="col-md-9" id="top_game_title">
                                            <div id="game_name">
-                                             <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
+                                             <a href="{{ route('games.show', $vote->game->id )}}">
+                                               @if (App::getLocale() == 'en')
+                                                 {{ $vote->game->name }}
+                                               @else 
+                                                 {{ $vote->game->japanese_name }}
+                                               @endif
+                                             </a>
                                            </div>
                                            <div>
                                              <i class="icon disabled outline laravelLike-icon thumbs up"></i>
@@ -42,7 +48,7 @@
     </div>
     <div class="container" style="margin-top: 20px;">
         <div class="page"> --}}
-            <div class="content_title">All Games</div>
+            <div class="content_title">{{ trans('translate.allgame')}}</div>
             <div class="row">
                 @if (count($games) > 0)
                     <section class="games">
@@ -50,7 +56,7 @@
                     </section>
                 @endif
             </div> <!-- .row -->
-            <div class="content_title">New Games</div>
+            <div class="content_title">{{ trans('translate.newgame')}}</div>
             <div class="row">
               @foreach ($systems as $system)
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
@@ -59,8 +65,12 @@
                             <img src="/resource/upload/system_image/{{ $system->image}}"></span>
                         </div>
                         <div class="info">
-                            <h4 class="text-center">{{ $system->fullname }}</h4>
-                            @foreach( $system->games()->orderBy('created_at','esc')->limit(4)->get() as $key => $value )
+                            @if (App::getLocale() == 'en')
+                              <h4 class="text-center">{{ $system->fullname }}</h4>
+                            @else
+                              <h4 class="text-center">{{ $system->japanese_name }}</h4>
+                            @endif
+                            @foreach( $system->games()->orderBy('created_at','esc')->limit(4)->get() as $key => $value)
                             <div class="well well-sm">
                             <div class="row">
                                 <div class="col-xs-5 col-md-4 text-center" style="height: 50px;">
@@ -70,14 +80,18 @@
                                 </div>
                                 <div class="col-xs-7 col-md-8 section-box">
                                     <h5 style="text-align: center;">
+                                      @if (App::getLocale() == 'en')
                                         {{ $value->name }}
+                                      @else
+                                        {{ $value->japanese_name }}
+                                      @endif
                                     </h5>
                                 </div>
                             </div>
                             </div>
                             @endforeach
                         </div>
-                        <a href="{{ route('systems.show',$system->id) }}"><button class="btn btn-info">View more</button></a>
+                        <a href="{{ route('systems.show',$system->id) }}"><button class="btn btn-info">{{ trans('translate.viewmore')}}</button></a>
                     </div>
                 </div>
               @endforeach 

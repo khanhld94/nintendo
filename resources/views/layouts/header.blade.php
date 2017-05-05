@@ -11,7 +11,7 @@
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('/images/gamepad.png')}}" alt="Nintendo World">
         </a>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ route('home') }}">Nintendo World</a></li>
+            <li><a href="{{ route('home') }}">{{ trans('translate.webtitle') }}</a></li>
         </ul>
       </div>
       <div id="navbar3" class="navbar-collapse collapse">
@@ -25,32 +25,50 @@
               <input type="text" class="form-control" name="search" id="search" placeholder="search" style="width:200px;">
             </form>
           </li>
-          <li class="active"><a href="#">Home</a></li>
+          <li>
+            <form action="{{ route('language') }}" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <select name="locale" onchange="this.form.submit()">
+                <option value="en" {{ App::getLocale() == 'en' ? 'selected' : ''}}>en</option>
+                <option value="ja" {{ App::getLocale() == 'ja' ? 'selected' : ''}}>ja</option>
+              </select>
+            </form>
+          </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">System <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('translate.system')}}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               @foreach ($systems as $system)
+                @if ( App::getLocale() == 'en')
                  <li><a href="{{ route('systems.show', $system->id) }}">{{ $system->fullname }}</a></li>
                  <li class="divider"></li>
+                @else 
+                 <li><a href="{{ route('systems.show', $system->id) }}">{{ $system->japanese_name }}</a></li>
+                 <li class="divider"></li>
+                @endif
               @endforeach
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('translate.category')}}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               @foreach ($categories as $category)
+                @if ( App::getLocale() == 'en')
                  <li><a href="{{ route('categories.show', $category->id )}}">{{ $category->name }}</a></li>
                  <li class="divider"></li>
+                @else
+                 <li><a href="{{ route('categories.show', $category->id )}}">{{ $category->japanese_name }}</a></li>
+                 <li class="divider"></li>
+                @endif
               @endforeach
             </ul>
           </li>
           @if (Auth::guest())
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('translate.account')}}<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ route('login') }}">Login</a></li>
+                  <li><a href="{{ route('login') }}">{{ trans('translate.login')}}</a></li>
                   <li class="divider"></li>
-                  <li><a href="{{ route('register') }}">Registers</a></li>
+                  <li><a href="{{ route('register') }}">{{ trans('translate.register')}}</a></li>
                   <li class="divider"></li>
                 </ul>
             </li>
@@ -61,13 +79,13 @@
                 </div> 
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="{{ route('users.show', Auth::user()->id )}}">Profile</a></li>
+                  <li><a href="{{ route('users.show', Auth::user()->id )}}">{{ trans('translate.profile') }}</a></li>
                   <li class="divider"></li>
                   <li>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                        Logout
+                        {{ trans('translate.logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
