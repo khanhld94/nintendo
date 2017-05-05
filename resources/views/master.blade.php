@@ -10,6 +10,8 @@
         <!-- Loading third party fonts -->
         <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
         <!-- Loading main css file -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
@@ -45,8 +47,7 @@
           @yield('content')
       </div>
       <!-- Default snippet for navigation -->
-      <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
-      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+      
       <script src="{{ asset('js/plugins.js') }}"></script>
       <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}"></script>
       <script src="{{ asset('js/custom.js') }}"></script>

@@ -5,7 +5,11 @@
       <div class="page">
          <div class="breadcrumbs" style="font-family: fipps; margin-left: 25px;">
             <i class="fa fa-gamepad fa-3x"></i>
-            <a href="#">{{ $category->name }}</a>
+            @if (App::getlocale() == 'en')
+              <a href="#">{{ $category->name }}</a>
+            @else
+              <a href="#">{{ $category->japanese_name }}</a>
+            @endif
          </div>
          <div class="content">
             <!-- .row -->
@@ -27,7 +31,13 @@
                                         <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                     <td class="col-md-9" id="top_game_title">
                                        <div id="game_name">
-                                         <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
+                                         <a href="{{ route('games.show', $vote->game->id )}}">
+                                           @if (App::getLocale() == 'en')
+                                             {{ $vote->game->name }}
+                                           @else
+                                             {{ $vote->game->japanese_name }}
+                                           @endif
+                                          </a>
                                        </div>
                                        <div>
                                          <i class="icon disabled outline laravelLike-icon thumbs up"></i>

@@ -11,7 +11,7 @@
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('/images/gamepad.png')}}" alt="Nintendo World">
         </a>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ route('home') }}">{{ trans('translate.webtitle') }}</a></li>
+            <li><a href="{{ route('home') }}">Nintendo World</a></li>
         </ul>
       </div>
       <div id="navbar3" class="navbar-collapse collapse">
@@ -28,10 +28,8 @@
           <li>
             <form action="{{ route('language') }}" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <select name="locale" onchange="this.form.submit()">
-                <option value="en" {{ App::getLocale() == 'en' ? 'selected' : ''}}>en</option>
-                <option value="ja" {{ App::getLocale() == 'ja' ? 'selected' : ''}}>ja</option>
-              </select>
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />
             </form>
           </li>
           <li class="dropdown">

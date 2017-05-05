@@ -22,8 +22,13 @@
       <div class="page">
          <div class="top_breakcum">
             <i class="fa fa-gamepad fa-3x"></i>
-            <a href="#">{{ $game->system->fullname }}</a>
-            <span>> {{ $game->name }}</span>
+            @if (App::getLocale() == 'en')
+              <a href="#">{{ $game->system->fullname }}</a>
+              <span>> {{ $game->name }}</span>
+            @else
+              <a href="#">{{ $game->system->japanese_name }}</a>
+              <span>> {{ $game->japanese_name }}</span>
+            @endif
             <a id="popover" class="btn" rel="popover" data-content="" title="How To Play">
                 <img src="{{ asset('images/tipicon.png') }}">
             </a>
@@ -44,7 +49,7 @@
             
             <div class="panel-group" style="margin-top: 30px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
                 <div class="panel panel-primary" style="text-align: center;">
-                  <div class="panel-heading" style="background-color: #339966">Description</div>
+                  <div class="panel-heading" style="background-color: #339966">{{ trans('translate.description')}}</div>
                   <div class="panel-body">
                     {{ $game->description }}
                   </div>
@@ -56,18 +61,18 @@
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <input type="hidden" name="game_id" value="{{ $game->id }}">
                   <div class="form-group">
-                        <label>Leave Your Comment Here</label>
+                        <label>{{ trans('translate.commenthere') }}</label>
                         <textarea class="form-control" rows="3" name="body" style="width: 688px;"></textarea>
                   </div>
                   @if( Auth::user())
-                    <button type="submit" id="submit">Submit</button>
+                    <button type="submit" id="submit">{{ trans('translate.submit')}}</button>
                   @else
-                    <a href=" {{ route('login') }}"><button>Login to comment</button></a>
+                    <a href=" {{ route('login') }}"><button>{{ trans('translate.logintocomment')}}</button></a>
                   @endif
                 </form>
               </div>
               <div class="col-sm-12" style="margin-top: 30px;">
-                   <h3>Comment</h3>
+                   <h3>{{ trans('translate.comment') }}</h3>
               </div>
                 <!-- /col-sm-12 -->
              <!-- /row -->
@@ -82,14 +87,18 @@
               <div class="row">
                   <table class="table table-hover topgame_table">
                       <tbody>
-                          <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >Top games</h4></td></tr>
+                          <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >{{ trans('translate.topgame') }}</h4></td></tr>
                           @foreach ($top_vote_games as $vote)
                               <tr class="col-md-12" id="top_game">
                                   <td class="col-md-3" id="top_game_image">
                                       <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                   <td class="col-md-9" id="top_game_title">
                                      <div id="game_name">
-                                       <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
+                                       @if(App::getLocale() == 'en')
+                                         <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->name }}</a>
+                                       @else
+                                         <a href="{{ route('games.show', $vote->game->id )}}">{{ $vote->game->japanese_name }}</a>
+                                       @endif
                                      </div>
                                      <div>
                                        <i class="icon disabled outline laravelLike-icon thumbs up"></i>
@@ -103,7 +112,7 @@
               </div>
               <div class="panel-group">
                   <div class="panel panel-primary" style="text-align: center;">
-                    <div class="panel-heading" style="background-color: #339966">Do you like this game</div>
+                    <div class="panel-heading" style="background-color: #339966">{{ trans('translate.like')}}</div>
                     <div class="panel-body">
                       @include('laravelLikeComment::like', ['like_item_id' => $game->id ])
                     </div>
@@ -112,7 +121,7 @@
 
               <div class="panel-group">
                   <div class="panel panel-primary" style="text-align: center;">
-                    <div class="panel-heading" style="background-color: #339966">Share this game to your friend</div>
+                    <div class="panel-heading" style="background-color: #339966">{{ trans('translate.share') }}</div>
                     <div class="panel-body">
                       @include('layouts.share', [
                           'url' => request()->fullUrl(),
@@ -133,9 +142,7 @@
 @include ('layouts.footer')
 
 <!-- Emulator javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-<script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 <script type="text/javascript">

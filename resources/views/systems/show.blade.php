@@ -5,7 +5,11 @@
       <div class="page">
          <div class="breadcrumbs" style="font-family: fipps; margin-left: 25px;">
             <i class="fa fa-gamepad fa-3x"></i>
-            <a href="#">{{ $system->fullname }}</a>
+            @if (App::getLocale() == 'en')
+              <a href="#">{{ $system->fullname }}</a>
+            @else
+              <a href="#">{{ $system->japanese_name }}</a>
+            @endif
          </div>
          <div class="content">
             <!-- .row -->
@@ -27,7 +31,13 @@
                                         <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
                                     <td class="col-md-9" id="top_game_title">
                                        <div id="game_name">
-                                         <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->name }}</a>
+                                         <a href="{{ route('games.show', $top_game->id )}}">
+                                           @if (App::getLocale() == 'en')
+                                              {{ $top_game->name }}
+                                            @else
+                                              {{ $top_game->japanese_name }}
+                                            @endif
+                                         </a>
                                        </div>
                                        <div>
                                          System: {{ $top_game->system->name }}

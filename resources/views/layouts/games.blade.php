@@ -3,7 +3,11 @@
 		<div class="image_container">
 			<a href="{{ route('games.show', $game->id )}}"><img src="/resource/upload/game_image/{{ $game->image }}" alt="{{ $game->name}}"></a>
 			<div class="overlay">
-			  <div class="text">{{ $game->name }}</div>
+			  @if (App::getLocale() == 'en')
+			    <div class="text">{{ $game->name }}</div>
+			  @else
+			  	<div class="text">{{ $game->japanese_name }}</div>
+			  @endif
 			</div>
 		</div>
 	</div>
