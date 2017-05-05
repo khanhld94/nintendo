@@ -12,10 +12,11 @@
         <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Loading main css file -->
-        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
-        <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.css">
         <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
@@ -48,7 +49,7 @@
       <script src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/plugins.js') }}"></script>
       <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}"></script>
-      <script src="{{ asset('js/custom.js') }}"></script>   
+      <script src="{{ asset('js/custom.js') }}"></script>
     </body>
 
 </html>

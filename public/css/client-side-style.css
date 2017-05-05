@@ -1605,7 +1605,8 @@ ul.arrow {
     width: 16.6%;
     padding: 0 15px;
     float: left;
-    margin-bottom: 30px; }
+ /*   margin-bottom: 30px; */
+  }
     @media screen and (min-width: 991px) {
       .movie-list .movie:nth-child(6n+1) {
         clear: both; } }
