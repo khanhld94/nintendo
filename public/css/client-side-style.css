@@ -221,7 +221,7 @@ body {
   color: #84878d;
   font-family: "Roboto", "Open Sans", sans-serif;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 800;
   line-height: normal; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1641,7 +1641,7 @@ ul.arrow {
     .movie-list .movie .movie-title {
       font-size: 24px;
       font-size: 1em;
-      font-weight: 300;
+      font-weight: 900;
       text-align: center;
       margin-bottom: 20px; }
       .movie-list .movie .movie-title a {
