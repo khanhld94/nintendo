@@ -19,7 +19,9 @@ class GamesController extends Controller
     public function store(Request $request){
     	$this->validate($request,[
     		'name' => 'required',
+            'japanese_name' => 'required',
     		'description' => 'required',
+            'japanese_description' => 'required',
     		'system_id' => 'required',
             'image' => 'required',
             'resource' => 'required'
@@ -28,7 +30,9 @@ class GamesController extends Controller
     	$file_resource = time() . '-' .$request->file('gResource')->getClientOriginalName();
     	$game = new Game();
     	$game->name = $request->name;
+        $game->japanese_name = $request->japanese_name;
     	$game->description = $request->description;
+        $game->japanese_description = $request->japanese_description;
     	$game->system_id = $request->system_id;
     	$game->image = $file_image;
     	$request->file('fImages')->move('resource/upload/game_image/',$file_image);
