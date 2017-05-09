@@ -16,11 +16,14 @@ class SystemsController extends Controller
 
     	$this->validate($request,[
     		'name' => 'required',
-    		'description' => 'required|min:6'
+    		'description' => 'required|min:6',
+            'fullname' => 'required',
+            'japanese_name' => 'required',
     	]);
     	$file_name = $request->file('fImages')->getClientOriginalName();
     	$system = new System();
     	$system->name = $request->name;
+        $system->japanese_name = $request->japanese_name;
         $system->fullname = $request->fullname;
     	$system->description = $request->description;
     	$system->image = $file_name;

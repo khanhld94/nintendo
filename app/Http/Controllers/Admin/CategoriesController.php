@@ -16,6 +16,7 @@ class CategoriesController extends Controller
     	$category = new Category();
 
     	$category->name = $request->name;
+        $category->name = $request->japanese_name;
     	$category->save();
 
     	return redirect()->route('admin.category.index')->with('flash_message','Category created succesful');

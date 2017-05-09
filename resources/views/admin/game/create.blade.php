@@ -26,8 +26,12 @@
                     </select>
                  </div>
                  <div class="form-group">
-                    <label>Name</label>
+                    <label>Name (en) </label>
                     <input class="form-control" name="name" placeholder="Please Enter Gamename" />
+                 </div>
+                 <div class="form-group">
+                    <label>Name (ja) </label>
+                    <input class="form-control" name="japanese_name" placeholder="Please Enter Gamename" />
                  </div>
                  <div>
                     <label>Game Category</label><br>
@@ -37,8 +41,12 @@
                  </div>
                  <br>
                  <div class="form-group">
-                    <label>Game Description</label>
+                    <label>Game Description (en)</label>
                     <textarea class="form-control" rows="3" name="description"></textarea>
+                 </div>
+                 <div class="form-group">
+                    <label>Game Description (ja)</label>
+                    <textarea class="form-control" rows="3" name="japanese_description"></textarea>
                  </div>
                  <button type="submit" class="btn btn-default">Add</button>
                  <button type="reset" class="btn btn-default">Reset</button>

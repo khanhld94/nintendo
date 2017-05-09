@@ -60,8 +60,10 @@
                      <form action="{!! route('admin.category.store') !!}" method="POST">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                         <div class="form-group">
-                          <label>Name</label>
+                          <label>Name (en)</label>
                           <input class="form-control" name="name" placeholder="Please Enter Category Name" />
+                          <label>Name (ja)</label>
+                          <input class="form-control" name="japanese_name" placeholder="Please Enter Category Name" />
                       </div>
                       <button type="submit" class="btn btn-default">Add</button>
                       <button type="reset" class="btn btn-default">Reset</button>
