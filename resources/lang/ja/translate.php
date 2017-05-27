@@ -31,5 +31,8 @@ return [
     'helpcenter' => 'ヘルプセンター',
     'joinus' => '参加',
     'socialmedia' => 'ソーシャルメディア',
-    'contactme' => '私に連絡して'
+    'contactme' => '私に連絡して',
+    'searchresult' => '検索結果',
+    'search' => '検索',
+    'noresult' => '結果が見つかりません'
 ];

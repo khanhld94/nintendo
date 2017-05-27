@@ -50,7 +50,7 @@
             <div class="panel-group" style="margin-top: 30px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
                 <div class="panel panel-primary" style="text-align: center;">
                   <div class="panel-heading" style="background-color: #339966">{{ trans('translate.description')}}</div>
-                  <div class="panel-body" style="text-align: justify;">
+                  <div class="panel-body" style="text-align: justify; font-weight: 300;">
                     @if(App::getLocale() == 'en')
                       {{ $game->description }}
                     @else 

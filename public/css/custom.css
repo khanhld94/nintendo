@@ -24,6 +24,13 @@
 	height: 100%;
 	max-height: 100%;
 }
+
+#top_game img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
 #top_game_title {
 	padding-top: 10px;
 	color: gray;
@@ -83,7 +90,7 @@
 
 .content_title {
     background: #222222;
-    width: 1104px;
+    width: 100%;
     height: 53px;
     margin-bottom: 15px;
     text-align: center;
@@ -388,3 +395,7 @@
     transition: all 0.5s ease 0s;
 }
 
+.open > .dropdown-menu {
+  opacity: 1;
+  font-weight: 800;
+}

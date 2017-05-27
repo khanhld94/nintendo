@@ -31,5 +31,8 @@ return [
     'helpcenter' => 'Help Center',
     'joinus' => 'Join Us',
     'socialmedia' => 'Social Media',
-    'contactme' => 'Contact Me'
+    'contactme' => 'Contact Me',
+    'searchresult' => 'Search Results',
+    'search' => 'Search',
+    'noresult' => 'No results found'
 ];

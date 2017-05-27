@@ -20,6 +20,7 @@
       <!-- easy pie chart-->
       <!-- owl carousel -->
       <!-- Custom styles -->
+      <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
       <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
       <link href="{{ asset('/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">

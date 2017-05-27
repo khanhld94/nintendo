@@ -276,7 +276,7 @@ form textarea {
 
 .slider {
   position: relative;
-  margin-bottom: 30px; }
+  margin-bottom: 10px; }
   .slider .slides {
     list-style: none;
     *zoom: 1; }

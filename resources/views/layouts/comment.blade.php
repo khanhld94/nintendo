@@ -20,7 +20,7 @@
                <i></i>
              @endif
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="font-weight: 300;">
              {{ $comment->body }}
           </div>
           <!-- /panel-body -->

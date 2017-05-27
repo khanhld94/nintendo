@@ -13,15 +13,19 @@
          @else
           <div class="col-md-9" id="left-content">
           	@foreach ($search_results as $game)
-				<div class="col-sm-6 col-md-3">
-					<div class="image_container">
-						<a href="{{ route('games.show', $game->id )}}"><img src="/resource/upload/game_image/{{ $game->image }}" alt="{{ $game->name}}"></a>
-						<div class="overlay">
-						  <div class="text">{{ $game->name }}</div>
-						</div>
-					</div>
-				</div>
-			@endforeach
+      				<div class="col-sm-6 col-md-3">
+      					<div class="image_container">
+      						<a href="{{ route('games.show', $game->id )}}"><img src="/resource/upload/game_image/{{ $game->image }}" alt="{{ $game->name}}"></a>
+      						<div class="overlay">
+                    @if(App::getLocale() == 'en')
+        						  <div class="text">{{ $game->name }}</div>
+                    @else 
+                      <div class="text">{{ $game->japanese_name }}</div>
+                    @endif
+      						</div>
+      					</div>
+      				</div>
+      			@endforeach
 {{-- 			<div class="col-md-12" style="text-align: center;">{{ $games->render() }}</div> --}}
           </div>
           <div class="col-md-3"> 
@@ -34,12 +38,21 @@
                                   <td class="col-md-3" id="top_game_image">
                                       <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
                                   <td class="col-md-9" id="top_game_title">
+                                    @if(App::getLocale() == 'en')
                                      <div id="game_name">
                                        <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->name }}</a>
                                      </div>
                                      <div>
                                        System: {{ $top_game->system->name }}
                                      </div>
+                                     @else
+                                      <div id="game_name">
+                                       <a href="{{ route('games.show', $top_game->id )}}">{{ $top_game->japanese_name }}</a>
+                                     </div>
+                                     <div>
+                                       System: {{ $top_game->system->japanese_name }}
+                                     </div>
+                                     @endif
                                   </td>
                               </tr>
                           @endforeach

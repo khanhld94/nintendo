@@ -24,6 +24,7 @@ Route::get('/games/{id}/show/comment/{comment_id}/delete',['middleware' => ['aut
 	'uses' => 'GamesController@delete_comment']);
 Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
 Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsController@search' ]);
+Route::get('/games/search', ['as' => 'search', 'uses' => 'SearchsController@show']);
 Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesController@show']);
 Route::get('/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'ProfilesController@edit']);
 Route::post('/users/{id}/edit', ['as' => 'users.update', 'uses' => 'ProfilesController@update']);
