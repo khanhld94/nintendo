@@ -23,6 +23,19 @@
         <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/client-side-style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+        <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js' type='text/javascript'/>
+        <script>
+            $(window).load(function(){
+                $(.social-buttons .social-icon).mouseenter(function(){
+                    $(this).stop();
+                    $(this).animate({width:160}, 500, easeOutBounce,function(){}); 
+                });
+                $(.social-buttons .social-icon;).mouseleave(function(){
+                    $(this).stop();
+                    $(this).animate({width:43;}, 500, easeOutBounce,function(){});
+                });
+            });
+        </script>
         <style type="text/css">
             @font-face {
                 font-family: fipps;
@@ -37,6 +50,10 @@
         <script src="js/ie-support/respond.js"></script>
         <![endif]-->
     </head>
+    @include('layouts.socialshare', [
+        'url' => request()->fullUrl(),
+        'description' => 'This is really cool link'
+    ])
     <body>
       @include ('layouts.header')
       @if (Session::has('flash_message'))

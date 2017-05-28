@@ -44,8 +44,8 @@
                   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                      <div class="info-box green-bg">
                         <i class="fa fa-cubes"></i>
-                        <div class="count">1.426</div>
-                        <div class="title">Visit</div>
+                        <div class="count">{{ $feedback_count }}</div>
+                        <div class="title">Feedbacks</div>
                      </div>
                      <!--/.info-box-->         
                   </div>

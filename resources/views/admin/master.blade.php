@@ -338,6 +338,16 @@
                         <li><a class="" href="#">List User</a></li>
                      </ul>
                   </li>
+                  <li class="sub-menu">
+                     <a href="#" class="">
+                     <i class="fa fa-comments"></i>
+                     <span>Feedback</span>
+                     <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                     <ul class="sub">
+                        <li><a class="" href="{{ route('admin.feedback.index') }}">List Feedback</a></li>
+                     </ul>
+                  </li>
                </ul>
                <!-- sidebar menu end-->
             </div>

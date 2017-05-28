@@ -18,6 +18,7 @@ return [
     'logout' => 'Log Out',
     'description' => 'Description',
     'share' => 'Share this game to your friend',
+    'feedback' => 'Feedback',
     'like' => 'Rate this game',
     'commenthere' => 'Leave your comment here',
     'logintocomment' => 'Login to comment',
@@ -34,5 +35,6 @@ return [
     'contactme' => 'Contact Me',
     'searchresult' => 'Search Results',
     'search' => 'Search',
-    'noresult' => 'No results found'
+    'noresult' => 'No results found',
+    'send' => 'Send'
 ];

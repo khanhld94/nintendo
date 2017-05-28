@@ -18,6 +18,7 @@ return [
     'logout' => 'ログアウト',
     'description' => '説明',
     'share' => '友達にシェアしよう',
+    'feedback' => 'フィードバック',
     'like' => '評価',
     'commenthere' => 'ここにコメントする',
     'logintocomment' => 'コメントにログイン',
@@ -34,5 +35,6 @@ return [
     'contactme' => '私に連絡して',
     'searchresult' => '検索結果',
     'search' => '検索',
-    'noresult' => '結果が見つかりません'
+    'noresult' => '結果が見つかりません',
+    'send' => 'サブミット'
 ];

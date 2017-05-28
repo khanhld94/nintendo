@@ -1,0 +1,4 @@
+<div class='social-buttons button-right hidden-phone hidden-tablet'>
+<a class='itemsocial' href='https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}' id='facebook-btn' target='_blank'><span class='social-icon'><span class='social-text'>Share to Facebook</span></span></a>
+<a class='itemsocial' href='https://twitter.com/intent/tweet?url={{ urlencode($url) }}' id='twitter-btn' target='_blank'><span class='social-icon'><span class='social-text'>Share to Twitter</span></span></a>
+<a class='itemsocial' href='https://plus.google.com/share?url={{ urlencode($url) }}' id='google-btn' target='_blank'><span class='social-icon'><span class='social-text'>Share to G+</span></span></a></div>
