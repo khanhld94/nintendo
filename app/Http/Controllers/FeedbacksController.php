@@ -8,7 +8,7 @@ use Auth;
 
 class FeedbacksController extends Controller
 {
-    public function feedback(Request $request, $id)
+    public function feedback(Request $request)
     {
     	$feedback = new Feedback();
     	$feedback->user_id = Auth::user()->id;

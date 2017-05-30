@@ -10,13 +10,13 @@
               <a href="#">{{ $game->system->japanese_name }}</a>
               <span>> {{ $game->japanese_name }}</span>
             @endif
-            <a id="popover" class="btn" rel="popover" data-content="" title="How To Play">
+            {{-- <a id="popover" class="btn" rel="popover" data-content="" title="How To Play">
                 <img src="{{ asset('images/tipicon.png') }}">
-            </a>
+            </a> --}}
          </div>
          <div class="content">
             <!-- .row -->
-          <div class="col-md-8" id="left-content">
+          <div class="col-md-8 col-sm-12" id="left-content">
             
             <div class="game-content">
                <div id="emulator">
@@ -27,8 +27,24 @@
                   </a>
                </div>
             </div>
-            
-            <div class="panel-group" style="margin-top: 30px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
+            <div>
+              <a id="popover" class="btn" rel="popover" data-content="" title="How To Play" style="width: 70px;">
+                <img src="{{ asset('images/tipicon.png') }}">
+               </a>
+               <span style="margin-right: 50px;">{{ trans('translate.howtoplay')}}</span>
+               @if (!Auth::guest())
+                 <form action="{{ route('games.bookmark') }}" method="POST" style="display: inline;">
+                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                   @if (Auth::user()->check_bookmarked($game->id))
+                     <span class="glyphicon glyphicon-heart bookmark bookmarked" style="vertical-align:middle">
+                   @else
+                     <span class="glyphicon glyphicon-heart bookmark unbookmarked" style="vertical-align:middle">
+                   @endif
+                 </form>
+                 </span><span>{{ trans('translate.bookmark')}}</span>
+               @endif
+            </div>
+            <div class="panel-group" style="margin-top: 10px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
                 <div class="panel panel-primary" style="text-align: center;">
                   <div class="panel-heading" style="background-color: #339966">{{ trans('translate.description')}}</div>
                   <div class="panel-body" style="text-align: justify;">
@@ -70,9 +86,9 @@
           </div>
           <div class="col-md-4"> 
               <div class="row">
+                  <div class="content_title" style="margin-bottom: 0px;">{{ trans('translate.topgame')}}</div>
                   <table class="table table-hover topgame_table">
                       <tbody>
-                          <tr id="top_game" style="background-color: #222222;color: white"><td><h4 style="text-align: center; font-family: fipps" >{{ trans('translate.topgame') }}</h4></td></tr>
                           @foreach ($top_vote_games as $vote)
                               <tr class="col-md-12" id="top_game">
                                   <td class="col-md-3" id="top_game_image">
@@ -112,7 +128,7 @@
                       <div class="panel-body">
                         <input class="form-control" name="content" placeholder="Feedback to us"></input>
                       </div>
-                      <button type="submit" class="btn btn-primary" id="feedback_submit">Send</button>
+                      <button type="submit" class="btn btn-primary" id="feedback_submit">{{ trans('translate.send')}}</button>
                     </form> 
                   </div>
               </div>
@@ -142,6 +158,27 @@
                   alert('Feedback cant be blank');
                 }
               }); 
+        });
+
+        $(".bookmark").click(function(e){
+          $(this).toggleClass("bookmarked");
+          $.ajaxSetup({
+             headers: { 'X-CSRF-Token' : $('input[name=_token]').attr('value') }
+          });
+          var bookmarkurl = '{{ route('games.bookmark')}}';
+          var game_id = $('input[name=game_id]').val();
+          e.preventDefault();
+             $.ajax({
+                url: bookmarkurl ,
+                type: "post",
+                data: {'game_id': game_id},
+                success: function(msg){
+                  console.log('Success !!');
+                },
+                error: function(data){
+                  console.log('Error');
+                }
+              });
         });
 
     });

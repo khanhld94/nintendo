@@ -25,4 +25,7 @@ class Game extends Model
     public function total_vote(){
         return $this->hasOne('\App\TotalVote','item_id');
     }
+    public function feedback(){
+        return $this->hasMany('\App\Feedback');
+    }
 }

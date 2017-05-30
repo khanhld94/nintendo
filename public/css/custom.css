@@ -3,6 +3,9 @@
     src: url('/fonts/Fipps-Regular.otf');
 }
 
+@icon-font-path {
+  src: url('/fonts/');
+}
 /* home page */
 
 .modal-content{
@@ -109,7 +112,7 @@
 }
 
 #popover {
-  margin-right: 100px;
+  margin-right: 10px;
 }
 .content {
   margin-top: 10px;
@@ -519,4 +522,29 @@
 }
 .social-buttons .social-text {
     color: #FFFFFF;
+}
+
+/* bookmark */
+.bookmark{
+/*  display:block !important;*/
+  font-size: 50px;
+  cursor:pointer;
+  vertical-align:middle;
+  margin-right: 10px;
+  /*color:#91918b;
+  position: absolute !important;
+  right:0px !important;
+  top: 5px !important;
+  z-index: 1 !important;
+  width: 40px;*/
+}
+
+.bookmarked{
+  color:#f44242;
+}
+.unbookmark{
+  color:#91918b;
+}
+.bookmark:hover{
+  color:#f44242;
 }

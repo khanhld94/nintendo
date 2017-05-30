@@ -36,5 +36,7 @@ return [
     'searchresult' => '検索結果',
     'search' => '検索',
     'noresult' => '結果が見つかりません',
-    'send' => 'サブミット'
+    'send' => 'サブミット',
+    'howtoplay' => '遊び方',
+    'bookmark' => 'ブックマーク'
 ];

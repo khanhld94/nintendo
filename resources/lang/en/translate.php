@@ -36,5 +36,7 @@ return [
     'searchresult' => 'Search Results',
     'search' => 'Search',
     'noresult' => 'No results found',
-    'send' => 'Send'
+    'send' => 'Send',
+    'howtoplay' => 'How To Play',
+    'bookmark' => 'Bookmark This Game'
 ];

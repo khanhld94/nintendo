@@ -18,10 +18,11 @@ class ProfilesController extends Controller
 	public function show(Request $request,$id){
        $user = User::find($id);
        $user_votes = $user->votes()->where('vote',1)->paginate(8);
+       $bookmarks = $user->bookmarks()->paginate(8);
        if ($request->ajax()) {
-            return view('layouts.profilegamelist', ['user_votes' => $user_votes])->render();  
+            return view('layouts.profilegamelist', ['user_votes' => $user_votes, 'bookmarks' => 'bookmarks'])->render();  
        }
-       return view('users.show',compact('user','user_votes'));
+       return view('users.show',compact('user','user_votes','bookmarks'));
 
 	}
 	public function edit($id){

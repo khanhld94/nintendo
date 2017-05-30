@@ -29,8 +29,9 @@ Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesControl
 Route::get('/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'ProfilesController@edit']);
 Route::post('/users/{id}/edit', ['as' => 'users.update', 'uses' => 'ProfilesController@update']);
 Route::get('/categories/{id}/show', ['as' => 'categories.show','uses' => 'CategoriesController@show']);
-Route::post('/games/{id}/feedback',['middleware' => ['auth'] , 'as' => 'games.feedback', 
+Route::post('/games/feedback',['middleware' => ['auth'] , 'as' => 'games.feedback', 
 	'uses' => 'FeedbacksController@feedback']);
+Route::post('/games/bookmark', ['as' => 'games.bookmark', 'uses' => 'BookmarksController@bookmark']);
 
 /* admin side router */
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
