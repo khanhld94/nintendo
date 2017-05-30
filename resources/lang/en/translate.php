@@ -38,5 +38,10 @@ return [
     'noresult' => 'No results found',
     'send' => 'Send',
     'howtoplay' => 'How To Play',
-    'bookmark' => 'Bookmark This Game'
+    'bookmark' => 'Bookmark This Game',
+    'top' => 'Top',
+    'games' => 'games',
+    'choosecategory' => 'Choose Category',
+    'choosesystem' => 'Choose System',
+    'logintofeedback' => 'Login To Feedback'
 ];
