@@ -5,9 +5,14 @@
 			<div class="overlay">
 			  @if (App::getLocale() == 'en')
 			    <div class="text">{{ $game->name }}</div>
+			    <div class="overlay_name">{{ trans('translate.system') }} : {{ $game->system->name }}</div>
 			  @else
 			  	<div class="text">{{ $game->japanese_name }}</div>
+			  	<div class="overlay_name">{{ trans('translate.system') }} : {{ $game->system->japanese_name }}</div>
 			  @endif
+			  	<div class="overlay_like">
+			  		<i class="icon disabled outline laravelLike-icon thumbs up"></i>{{ $game->total_vote->total_like }}<i class="icon  outline laravelLike-icon thumbs down" style="padding-left: 5px !important;"></i>{{ $game->total_vote->total_dislike }}
+			  	</div>
 			</div>
 		</div>
 	</div>

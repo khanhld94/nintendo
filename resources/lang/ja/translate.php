@@ -38,5 +38,9 @@ return [
     'noresult' => '結果が見つかりません',
     'send' => 'サブミット',
     'howtoplay' => '遊び方',
-    'bookmark' => 'ブックマーク'
+    'bookmark' => 'ブックマーク',
+    'top' => 'トップ',
+    'games' => 'ゲーム',
+    'choosecategory' => 'カテゴリを選択',
+    'choosesystem' => 'システムを選択'
 ];

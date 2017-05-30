@@ -27,11 +27,11 @@
                   </a>
                </div>
             </div>
-            <div>
+            <div class="tags">
               <a id="popover" class="btn" rel="popover" data-content="" title="How To Play" style="width: 70px;">
                 <img src="{{ asset('images/tipicon.png') }}">
                </a>
-               <span style="margin-right: 50px;">{{ trans('translate.howtoplay')}}</span>
+               <span style="margin-right: 10px;">{{ trans('translate.howtoplay')}}</span>
                @if (!Auth::guest())
                  <form action="{{ route('games.bookmark') }}" method="POST" style="display: inline;">
                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -43,6 +43,16 @@
                  </form>
                  </span><span>{{ trans('translate.bookmark')}}</span>
                @endif
+               @foreach( $game->categories as $category)
+                <span><a href="{{ route('categories.show', $category->id )}}" class="tag">
+                  @if(App::getLocale() == 'en')  
+                    {{ $category->name }}
+                  @else
+                    {{ $category->japanese_name }}
+                  @endif
+                  </a>
+                </span>
+               @endforeach 
             </div>
             <div class="panel-group" style="margin-top: 10px;margin-left: 12px;margin-right: 12px;margin-bottom: 20px;">
                 <div class="panel panel-primary" style="text-align: center;">
