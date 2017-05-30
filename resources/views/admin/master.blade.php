@@ -20,6 +20,7 @@
       <!-- easy pie chart-->
       <!-- owl carousel -->
       <!-- Custom styles -->
+      <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
       <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
       <link href="{{ asset('/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
@@ -335,6 +336,16 @@
                      </a>
                      <ul class="sub">
                         <li><a class="" href="#">List User</a></li>
+                     </ul>
+                  </li>
+                  <li class="sub-menu">
+                     <a href="#" class="">
+                     <i class="fa fa-comments"></i>
+                     <span>Feedback</span>
+                     <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                     <ul class="sub">
+                        <li><a class="" href="{{ route('admin.feedback.index') }}">List Feedback</a></li>
                      </ul>
                   </li>
                </ul>

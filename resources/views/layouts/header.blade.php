@@ -22,14 +22,7 @@
               <button type="submit" class="btn btn-default pull-right" style="padding: 3px 12px; margin-left: 5px;">
                 <span class="fa fa-search"></span>
               </button>
-              <input type="text" class="form-control" name="search" id="search" placeholder="search" style="width:200px;">
-            </form>
-          </li>
-          <li>
-            <form action="{{ route('language') }}" method="POST">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />
-              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />
+              <input type="text" class="form-control" name="search" id="search" placeholder="{{ trans('translate.search')}}" style="width:200px;">
             </form>
           </li>
           <li class="dropdown">
@@ -93,6 +86,27 @@
                 </ul>
             </li>    
           @endif
+          {{-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-bottom: 0px;">
+              @if(App::getLocale() == 'en')
+                  <img style="border: none;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />
+                @else
+                  <img style="border: none;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />
+                @endif<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><input style="border: none;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />English</li>
+                <li class="divider"></li>
+                <li><input style="border: none;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />Japanese</li>
+                <li class="divider"></li>
+              </ul>
+          </li> --}}
+          <li>
+            <form action="{{ route('language') }}" method="POST">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />
+            </form>
+          </li>
         </ul>
       </div>
       <!--/.nav-collapse -->

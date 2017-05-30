@@ -18,6 +18,7 @@ return [
     'logout' => 'ログアウト',
     'description' => '説明',
     'share' => '友達にシェアしよう',
+    'feedback' => 'フィードバック',
     'like' => '評価',
     'commenthere' => 'ここにコメントする',
     'logintocomment' => 'コメントにログイン',
@@ -31,5 +32,11 @@ return [
     'helpcenter' => 'ヘルプセンター',
     'joinus' => '参加',
     'socialmedia' => 'ソーシャルメディア',
-    'contactme' => '私に連絡して'
+    'contactme' => '私に連絡して',
+    'searchresult' => '検索結果',
+    'search' => '検索',
+    'noresult' => '結果が見つかりません',
+    'send' => 'サブミット',
+    'howtoplay' => '遊び方',
+    'bookmark' => 'ブックマーク'
 ];

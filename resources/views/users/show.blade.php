@@ -20,10 +20,10 @@
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
+				{{-- <div class="profile-userbuttons">
 					<button type="button" class="btn btn-success btn-sm">Follow</button>
 					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div>
+				</div> --}}
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
@@ -45,18 +45,30 @@
 		</div>
 		<div class="col-md-9">
             <div class="profile-content">
-            	<div class="panel-group">
+              <div class="panel-group">
                   <div class="panel panel-primary" style="text-align: center;">
-                    <div class="panel-heading" style="background-color: #339966">Game You Like</div>
+                    <div class="panel-heading" style="background-color: #339966">Game You Bookmarked</div>
                     <div class="panel-body">
-                      @if (count($user_votes) > 0)
+                      @if (count($bookmarks) > 0)
 	                    <section class="games">
-	                        @include('layouts.profilegamelist')
+	                        @include('layouts.profilegamelist',['user_votes'=> $bookmarks])
 	                    </section>
 	                  @endif
                     </div>
                   </div>
-              </div>
+                </div>
+                @if (count($user_votes) > 0)
+	            	<div class="panel-group">
+	                  <div class="panel panel-primary" style="text-align: center;">
+	                    <div class="panel-heading" style="background-color: #339966">Game You Like</div>
+	                    <div class="panel-body">
+	                      <section class="games">
+	                          @include('layouts.profilegamelist')
+	                      </section>
+	                    </div>
+	                  </div>
+	                </div>
+                @endif
             </div>
 		</div>
 	</div>

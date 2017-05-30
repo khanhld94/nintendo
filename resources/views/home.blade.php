@@ -15,13 +15,9 @@
             </div>
             <div class="col-md-3">
                <div class="row">
+                  <div class="content_title" style="margin-bottom: 0px;">{{ trans('translate.topgame')}}</div>
                   <table class="table table-hover topgame_table">
                      <tbody>
-                        <tr id="top_game" style="background-color: #222222;color: white">
-                           <td>
-                              <h4 style="text-align: center; font-family: fipps" >{{ trans('translate.topgame')}}</h4>
-                           </td>
-                        </tr>
                         @foreach ($top_vote_games as $vote)
                         <tr class="col-md-12" id="top_game">
                            <td class="col-md-3" id="top_game_image">

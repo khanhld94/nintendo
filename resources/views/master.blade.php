@@ -18,7 +18,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.css">
         <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
@@ -38,6 +37,10 @@
         <script src="js/ie-support/respond.js"></script>
         <![endif]-->
     </head>
+    @include('layouts.socialshare', [
+        'url' => request()->fullUrl(),
+        'description' => 'This is really cool link'
+    ])
     <body>
       @include ('layouts.header')
       @if (Session::has('flash_message'))
