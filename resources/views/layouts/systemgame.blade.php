@@ -138,7 +138,11 @@
                       <div class="panel-body">
                         <input class="form-control" name="content" placeholder="Feedback to us"></input>
                       </div>
-                      <button type="submit" class="btn btn-primary" id="feedback_submit">{{ trans('translate.send')}}</button>
+                      @if( Auth::user())
+                        <button type="submit" class="btn btn-primary" id="feedback_submit">{{ trans('translate.send')}}</button>
+                      @else
+                        <a href=" {{ route('login') }}"><button>{{ trans('translate.logintofeedback') }}</button></a>
+                      @endif
                     </form> 
                   </div>
               </div>

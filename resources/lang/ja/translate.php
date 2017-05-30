@@ -42,5 +42,6 @@ return [
     'top' => 'トップ',
     'games' => 'ゲーム',
     'choosecategory' => 'カテゴリを選択',
-    'choosesystem' => 'システムを選択'
+    'choosesystem' => 'システムを選択',
+    'logintofeedback' => 'フィードバックにログイン'
 ];

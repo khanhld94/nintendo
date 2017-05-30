@@ -42,5 +42,6 @@ return [
     'top' => 'Top',
     'games' => 'games',
     'choosecategory' => 'Choose Category',
-    'choosesystem' => 'Choose System'
+    'choosesystem' => 'Choose System',
+    'logintofeedback' => 'Login To Feedback'
 ];
