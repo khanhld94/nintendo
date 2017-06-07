@@ -25,6 +25,8 @@ Route::get('/games/{id}/show/comment/{comment_id}/delete',['middleware' => ['aut
 Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
 Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsController@search' ]);
 Route::get('/games/search', ['as' => 'search', 'uses' => 'SearchsController@show']);
+Route::get('/games/advancedsearch', ['as' => 'search', 'uses' => 'SearchsController@advancedsearchshow']);
+Route::post('/games/advancedsearch', ['as' => 'games.advancedsearch', 'uses' => 'SearchsController@advancedsearch' ]);
 Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesController@show']);
 Route::get('/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'ProfilesController@edit']);
 Route::post('/users/{id}/edit', ['as' => 'users.update', 'uses' => 'ProfilesController@update']);
@@ -62,6 +64,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function ()
 	});
 	Route::group(['prefix'=>'user'], function () {
 		Route::get('index',['as'=>'admin.user.index', 'uses'=>'Admin\UsersController@index']);
+		Route::get('destroy/{id}',['as'=>'admin.user.destroy', 'uses'=>'Admin\UsersController@destroy']);
 	});
 	Route::group(['prefix'=>'feedback'], function () {
 		Route::get('index',['as'=>'admin.feedback.index', 'uses'=>'Admin\FeedbacksController@index']);

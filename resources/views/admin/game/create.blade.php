@@ -15,7 +15,7 @@
             @include('admin.layouts.error')
             <form action="{{ route('admin.game.store') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <div class="col-lg-6" style="padding-bottom:120px">
+              <div class="col-lg-7" style="padding-bottom:120px">
                  <div class="form-group">
                     <label>System</label>
                     <select class="form-control" name="system_id">
@@ -51,7 +51,7 @@
                  <button type="submit" class="btn btn-default">Add</button>
                  <button type="reset" class="btn btn-default">Reset</button>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-5">
                    <div class="form-group">
                     <label>Images</label>
                     <input type="file" name="fImages">
@@ -61,15 +61,38 @@
                     <input type="file" name="gResource">
                    </div>
                    <label>Preview Game</label>
-                   <div class="game-content">
-                       <div id="emulator">
-                          <p>To play this game, please, download the latest Flash player!</p>
-                          <br>
-                          <a href="http://www.adobe.com/go/getflashplayer">
-                          <img src="//www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" alt="Get Adobe Flash player"/>
-                          </a>
-                       </div>
-                    </div>
+                   <div>
+                    <a class="internal-link" data-toggle="modal" data-target="#myModalHorizontal"><button class="btn btn-primary play-button" >preview Resource</button></a>
+                   </div>
+                   <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" 
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <!-- Modal Header -->
+                           <div class="modal-header">
+                              <button type="button" class="close" 
+                                 data-dismiss="modal">
+                              <span aria-hidden="true">&times;</span>
+                              <span class="sr-only">Close</span>
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel" style="color: Black;">
+                                 Preview
+                              </h4>
+                           </div>
+                           <!-- Modal Body -->
+                           <div class="modal-body">
+                              <div id="emulator">
+                                 <p>To play this game, please, download the latest Flash player!</p>
+                                 <br>
+                                 <a href="http://www.adobe.com/go/getflashplayer">
+                                 <img src="//www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" alt="Get Adobe Flash player"/>
+                                 </a>
+                              </div>
+                           </div>
+                           <!-- Modal Footer -->
+                        </div>
+                     </div>
+                  </div>
                </div>
             <form>
          </div>
@@ -102,7 +125,7 @@
                 params.allowFullScreen = 'true';
                 params.allowFullScreenInteractive = 'true';
                 
-                swfobject.embedSWF('{{asset('flash/Nesbox.swf')}}', 'emulator', '640', '480', '11.2.0', 'flash/expressInstall.swf', flashvars, params, attributes);
+                swfobject.embedSWF('{{asset('flash/Nesbox.swf')}}', 'emulator', '540', '480', '11.2.0', 'flash/expressInstall.swf', flashvars, params, attributes);
             }
         }
         

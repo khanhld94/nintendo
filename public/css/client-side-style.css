@@ -219,7 +219,7 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   color: #84878d;
-  font-family: "Roboto", "Open Sans", sans-serif;
+  /*font-family: "Roboto", "Open Sans", sans-serif;*/
   font-size: 15px;
   font-weight: 800;
   line-height: normal; }

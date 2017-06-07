@@ -12,4 +12,9 @@ class UsersController extends Controller
     	$users = User::all();
     	return view('admin.user.index',compact('users'));
     }
+    public function destroy($id) {
+    	$user = User::find($id);
+    	$user->delete($id);
+    	return redirect()->route('admin.user.index')->with('flash_message','User Have Been Deleted');
+    }
 }

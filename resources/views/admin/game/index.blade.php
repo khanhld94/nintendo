@@ -16,7 +16,7 @@
          <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">All Game</a></li>
             @foreach ($systems as $system)
-            <li><a data-toggle="tab" href="#{{$system->id}}">{{ $system->name }}</a></li>
+              <li><a data-toggle="tab" href="#{{$system->id}}">{{ $system->name }}</a></li>
             @endforeach
          </ul>
          <div class="tab-content">
@@ -61,7 +61,11 @@
                                       <h4 class="modal-title">Description</h4>
                                     </div>
                                     <div class="modal-body">
+                                      <h3>English Description</h3>
                                       <p>{!! $game->description !!}</p>
+                                      <hr>
+                                      <h3>Japanese Description</h3>
+                                      <p>{!! $game->japanese_description !!}</p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn{!! $game->description !!}-default" data-dismiss="modal">Close</button>
@@ -72,7 +76,6 @@
                            </td>
                            <td>
                              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#my_{{$game->id}}">Show Image</button>
-
                               <!-- Modal -->
                               <div id="my_{{$game->id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
@@ -142,7 +145,11 @@
                                       <h4 class="modal-title">Description</h4>
                                     </div>
                                     <div class="modal-body">
+                                      <h3>English Description</h3>
                                       <p>{!! $systemgame->description !!}</p>
+                                      <hr>
+                                      <h3>Japanese Description</h3>
+                                      <p>{!! $systemgame->japanese_description !!}</p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn{!! $systemgame->description !!}-default" data-dismiss="modal">Close</button>

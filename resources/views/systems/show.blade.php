@@ -22,25 +22,26 @@
             </div>
             <div class="col-md-3"> 
                 <div class="row">
-                  <div class="content_title" style="margin-bottom: 0px;">{{ trans('translate.top') }} {{ $system->name }} {{ trans('translate.games') }}</div>
+                    <div class="content_title" style="margin-bottom: 0px;">{{ trans('translate.topgame')}}</div>
                     <table class="table table-hover topgame_table">
                         <tbody>
-                            @foreach ($top_games as $top_game)
+                            @foreach ($top_vote_games as $vote)
                                 <tr class="col-md-12" id="top_game">
                                     <td class="col-md-3" id="top_game_image">
-                                        <img src="/resource/upload/game_image/{{ $top_game->image }}"></td>
+                                        <img src="/resource/upload/game_image/{{ $vote->game->image }}"></td>
                                     <td class="col-md-9" id="top_game_title">
                                        <div id="game_name">
-                                         <a href="{{ route('games.show', $top_game->id )}}">
+                                         <a href="{{ route('games.show', $vote->game->id )}}">
                                            @if (App::getLocale() == 'en')
-                                              {{ $top_game->name }}
-                                            @else
-                                              {{ $top_game->japanese_name }}
-                                            @endif
-                                         </a>
+                                             {{ $vote->game->name }}
+                                           @else
+                                             {{ $vote->game->japanese_name }}
+                                           @endif
+                                          </a>
                                        </div>
                                        <div>
-                                         System: {{ $top_game->system->name }}
+                                         <i class="icon disabled outline laravelLike-icon thumbs up"></i>
+                                         {{ $vote->total_like }}
                                        </div>
                                     </td>
                                 </tr>

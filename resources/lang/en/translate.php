@@ -43,5 +43,6 @@ return [
     'games' => 'games',
     'choosecategory' => 'Choose Category',
     'choosesystem' => 'Choose System',
-    'logintofeedback' => 'Login To Feedback'
+    'logintofeedback' => 'Login To Feedback',
+    'searchresult' => 'Search Result'
 ];
