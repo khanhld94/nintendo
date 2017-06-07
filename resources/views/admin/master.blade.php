@@ -43,7 +43,7 @@
             <!--logo start-->
             <a href="{{ route('admin.home') }}" class="logo">NINTENDO <span class="lite">Admin</span></a>
             <!--logo end-->
-            <div class="nav search-row" id="top_menu">
+            {{-- <div class="nav search-row" id="top_menu">
                <!--  search form start -->
                <ul class="nav top-menu">
                   <li>
@@ -53,12 +53,12 @@
                   </li>
                </ul>
                <!--  search form end -->                
-            </div>
+            </div> --}}
             <div class="top-nav notification-row">
                <!-- notificatoin dropdown start-->
                <ul class="nav pull-right top-menu">
                   <!-- task notificatoin start -->
-                  <li id="task_notificatoin_bar" class="dropdown">
+                  {{-- <li id="task_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-task-l"></i>
                      <span class="badge bg-important">6</span>
@@ -139,10 +139,10 @@
                            <a href="#">See All Tasks</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- task notificatoin end -->
                   <!-- inbox notificatoin start-->
-                  <li id="mail_notificatoin_bar" class="dropdown">
+{{--                   <li id="mail_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-envelope-l"></i>
                      <span class="badge bg-important">5</span>
@@ -204,10 +204,10 @@
                            <a href="#">See all messages</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- inbox notificatoin end -->
                   <!-- alert notification start-->
-                  <li id="alert_notificatoin_bar" class="dropdown">
+                  {{-- <li id="alert_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-bell-l"></i>
                      <span class="badge bg-important">7</span>
@@ -249,7 +249,7 @@
                            <a href="#">See all notifications</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- alert notification end-->
                   <!-- user login dropdown start-->
                   <li class="dropdown">
@@ -262,9 +262,9 @@
                      </a>
                      <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li class="eborder-top">
+                        {{-- <li class="eborder-top">
                            <a href="#"><i class="icon_profile"></i> My Profile</a>
-                        </li>
+                        </li> --}}
                         <li>
                            
                            <a href="{{ route('logout') }}"
@@ -335,7 +335,7 @@
                      <span class="menu-arrow arrow_carrot-right"></span>
                      </a>
                      <ul class="sub">
-                        <li><a class="" href="#">List User</a></li>
+                        <li><a class="" href="{{ route('admin.user.index') }}">List User</a></li>
                      </ul>
                   </li>
                   <li class="sub-menu">

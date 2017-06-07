@@ -43,5 +43,6 @@ return [
     'games' => 'ゲーム',
     'choosecategory' => 'カテゴリを選択',
     'choosesystem' => 'システムを選択',
-    'logintofeedback' => 'フィードバックにログイン'
+    'logintofeedback' => 'フィードバックにログイン',
+    'searchresult' => '検索結果'
 ];

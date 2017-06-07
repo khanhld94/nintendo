@@ -17,7 +17,7 @@
              <thead>
                 <tr align="center">
                    <th>ID</th>
-                   <th>Game Id</th>
+                   <th>Game Name</th>
                    <th>Content</th>
                    <th>Delete</th>
                 </tr>
@@ -27,7 +27,7 @@
                 <tr class="odd gradeX" align="center">
                    <td>{{ $feedback->id }}</td>
                    <td>
-                     {{ $feedback->game_id }}
+                     {{ $feedback->game->name }}
                    </td>
                    <td>
                      {{ $feedback->content }}

@@ -20,6 +20,7 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Japanese Name</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>Delete</th>
@@ -31,10 +32,11 @@
                                 <tr class="even gradeC" align="center">
                                     <td>{!! $system->id !!}</td>
                                     <td>{!! $system->name !!}</td>
+                                    <td>{!! $system->japanese_name !!}</td>
                                     <td>{!! $system->description !!}</td>
                                     <td><img src="/resource/upload/system_image/{!! $system->image !!}" style="max-height: 100px; max-width: 100px;"></td>
                                     <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! URL::route('admin.system.destroy', $system['id']) !!}""> Delete</a></td>
-                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.system.edit', $system['id']) !!}">Edit</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
