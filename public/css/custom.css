@@ -446,7 +446,7 @@
 .social-buttons #pinterest-btn .social-icon,
 .social-buttons #youtube-btn .social-icon {
     background-color: #33353B;
-    background-image: url(http://2.bp.blogspot.com/-ALbNFv2NJW4/UVBaiBNec-I/AAAAAAAAJec/dGtctvHdAHM/s1600/mas-icons-namkna-blogspot-com.png);
+    background-image: url('/images/mas-icons-namkna-blogspot-com.png');
 }
 .button-left #facebook-btn span {
     background-position: right 10px;
