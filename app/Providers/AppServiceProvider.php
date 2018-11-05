@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\System;
+use App\Category;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +14,15 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    
+
     public function boot()
-    {
-        //
+    {   
+        view()->composer('welcome', function($view)
+        {
+            $view->with('systems', System::all());
+            $view->with('categories', Category::all());
+        });
     }
 
     /**
