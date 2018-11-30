@@ -103,8 +103,9 @@
           <li>
             <form action="{{ route('language') }}" method="POST">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="en" name="locale" src="{{ asset('/img/_England.png') }}" alt="English" />
-              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="ja" name="locale" src="{{ asset('/img/jp.png') }}" alt="Japanese" />
+              <input type="hidden" name="locale" id="locale">
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="en" src="{{ asset('/img/_England.png') }}" alt="English" class="locale"/>
+              <input style="border: none; padding-top: 20px; padding-left: 0px;padding-right: 0px;" type="image" value="ja" src="{{ asset('/img/jp.png') }}" alt="Japanese" class="locale"/>
             </form>
           </li>
         </ul>
@@ -114,3 +115,10 @@
     <!--/.container-fluid -->
   </nav>
   </div>
+  <script>
+      $(".locale").click(function (e) {
+          e.preventDefault();
+          $("#locale").val($(this).context.value)
+          $(this).parents('form:first').submit()
+      })
+  </script>
