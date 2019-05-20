@@ -10,7 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',['as'=>'home', 'uses'=>'static_pages_controller@home']);
+/* user side router */
+Route::post('/language', array (
+	'as' => 'language',
+	'Middleware' => 'LanguageSwitcher',
+	'uses' => 'LanguageController@index',
+));
+Route::get('/',['as'=>'home', 'uses'=>'StaticPagesController@home']);
+Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
+Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 
+	'uses' => 'GamesController@comment']);
+Route::get('/games/{id}/show/comment/{comment_id}/delete',['middleware' => ['auth'] , 'as' => 'games.comment.delete', 
+	'uses' => 'GamesController@delete_comment']);
+Route::get('/systems/{id}/show',['as' => 'systems.show', 'uses' => 'SystemsController@show']);
+Route::post('/games/search', ['as' => 'games.search', 'uses' => 'SearchsController@search' ]);
+Route::get('/games/search', ['as' => 'search', 'uses' => 'SearchsController@show']);
+Route::get('/games/advancedsearch', ['as' => 'search', 'uses' => 'SearchsController@advancedsearchshow']);
+Route::post('/games/advancedsearch', ['as' => 'games.advancedsearch', 'uses' => 'SearchsController@advancedsearch' ]);
+Route::get('/users/{id}/show', ['as' => 'users.show', 'uses' => 'ProfilesController@show']);
+Route::get('/users/{id}/edit', ['as' => 'users.edit', 'uses' => 'ProfilesController@edit']);
+Route::post('/users/{id}/edit', ['as' => 'users.update', 'uses' => 'ProfilesController@update']);
+Route::get('/categories/{id}/show', ['as' => 'categories.show','uses' => 'CategoriesController@show']);
+Route::post('/games/feedback',['middleware' => ['auth'] , 'as' => 'games.feedback', 
+	'uses' => 'FeedbacksController@feedback']);
+Route::post('/games/bookmark', ['as' => 'games.bookmark', 'uses' => 'BookmarksController@bookmark']);
+
+/* admin side router */
 Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function () {
 	Route::get('home',['as'=>'admin.home', 'uses'=>'Admin\HomeController@home']);
 	Route::group(['prefix'=>'system'], function () {
@@ -39,9 +64,12 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth','admin'] ], function ()
 	});
 	Route::group(['prefix'=>'user'], function () {
 		Route::get('index',['as'=>'admin.user.index', 'uses'=>'Admin\UsersController@index']);
+		Route::get('destroy/{id}',['as'=>'admin.user.destroy', 'uses'=>'Admin\UsersController@destroy']);
+	});
+	Route::group(['prefix'=>'feedback'], function () {
+		Route::get('index',['as'=>'admin.feedback.index', 'uses'=>'Admin\FeedbacksController@index']);
 	});	
 });
 Auth::routes();
 
-Route::get('/games/{id}/show',['as' => 'games.show', 'uses' => 'GamesController@show']);
-Route::post('/games/{id}/show',['middleware' => ['auth'] , 'as' => 'games.comment', 'uses' => 'GamesController@comment']);
+

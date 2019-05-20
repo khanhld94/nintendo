@@ -19,15 +19,12 @@
       <!-- full calendar css-->
       <!-- easy pie chart-->
       <!-- owl carousel -->
-      <link rel="stylesheet" href="{{ asset('/css/owl.carousel.css') }}" type="text/css">
-      <link href="{{ asset('/css/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
       <!-- Custom styles -->
-      <link rel="stylesheet" href="{{ asset('/css/fullcalendar.css') }}">
-      <link href="{{ asset('/css/widgets.css') }}" rel="stylesheet">
+      <script src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
       <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
       <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
-      <link href="{{ asset('/css/xcharts.min.css') }}" rel=" stylesheet">
       <link href="{{ asset('/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}">
       <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
       <!-- =======================================================
          Theme Name: NiceAdmin
@@ -46,7 +43,7 @@
             <!--logo start-->
             <a href="{{ route('admin.home') }}" class="logo">NINTENDO <span class="lite">Admin</span></a>
             <!--logo end-->
-            <div class="nav search-row" id="top_menu">
+            {{-- <div class="nav search-row" id="top_menu">
                <!--  search form start -->
                <ul class="nav top-menu">
                   <li>
@@ -56,12 +53,12 @@
                   </li>
                </ul>
                <!--  search form end -->                
-            </div>
+            </div> --}}
             <div class="top-nav notification-row">
                <!-- notificatoin dropdown start-->
                <ul class="nav pull-right top-menu">
                   <!-- task notificatoin start -->
-                  <li id="task_notificatoin_bar" class="dropdown">
+                  {{-- <li id="task_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-task-l"></i>
                      <span class="badge bg-important">6</span>
@@ -142,10 +139,10 @@
                            <a href="#">See All Tasks</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- task notificatoin end -->
                   <!-- inbox notificatoin start-->
-                  <li id="mail_notificatoin_bar" class="dropdown">
+{{--                   <li id="mail_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-envelope-l"></i>
                      <span class="badge bg-important">5</span>
@@ -207,10 +204,10 @@
                            <a href="#">See all messages</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- inbox notificatoin end -->
                   <!-- alert notification start-->
-                  <li id="alert_notificatoin_bar" class="dropdown">
+                  {{-- <li id="alert_notificatoin_bar" class="dropdown">
                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      <i class="icon-bell-l"></i>
                      <span class="badge bg-important">7</span>
@@ -252,7 +249,7 @@
                            <a href="#">See all notifications</a>
                         </li>
                      </ul>
-                  </li>
+                  </li> --}}
                   <!-- alert notification end-->
                   <!-- user login dropdown start-->
                   <li class="dropdown">
@@ -265,9 +262,9 @@
                      </a>
                      <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li class="eborder-top">
+                        {{-- <li class="eborder-top">
                            <a href="#"><i class="icon_profile"></i> My Profile</a>
-                        </li>
+                        </li> --}}
                         <li>
                            
                            <a href="{{ route('logout') }}"
@@ -338,7 +335,17 @@
                      <span class="menu-arrow arrow_carrot-right"></span>
                      </a>
                      <ul class="sub">
-                        <li><a class="" href="#">List User</a></li>
+                        <li><a class="" href="{{ route('admin.user.index') }}">List User</a></li>
+                     </ul>
+                  </li>
+                  <li class="sub-menu">
+                     <a href="#" class="">
+                     <i class="fa fa-comments"></i>
+                     <span>Feedback</span>
+                     <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                     <ul class="sub">
+                        <li><a class="" href="{{ route('admin.feedback.index') }}">List Feedback</a></li>
                      </ul>
                   </li>
                </ul>
@@ -360,74 +367,17 @@
       <!-- nice scroll -->
       <script src="{{ asset('/js/jquery.scrollTo.min.js') }}"></script>
       <script src="{{ asset('/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+      <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+      <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
       <!-- charts scripts -->
-      <script src="{{ asset('/js/jquery.sparkline.js') }}" type="text/javascript"></script>
-      <script src="{{ asset('/js/owl.carousel.js') }}" ></script>
       <!-- jQuery full calendar -->
-      <<script src="{{ asset('/js/fullcalendar.min.js') }}"></script> <!-- Full Google Calendar - Calendar -->
       <!--script for this page only-->
-      <script src="{{ asset('/js/calendar-custom.js') }}"></script>
       <script src="{{ asset('/js/jquery.rateit.min.js') }}"></script>
       <!-- custom select -->
       <script src="{{ asset('/js/jquery.customSelect.min.js') }}" ></script>
       <!--custome script for all page-->
       <script src="{{ asset('/js/scripts.js') }}"></script>
       <!-- custom script for this page-->
-      <script src="{{ asset('/js/sparkline-chart.js') }}"></script>
-      <script src="{{ asset('/js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-      <script src="{{ asset('/js/jquery-jvectormap-world-mill-en.js') }}"></script>
-      <script src="{{ asset('/js/xcharts.min.js') }}"></script>
-      <script src="{{ asset('/js/jquery.autosize.min.js') }}"></script>
-      <script src="{{ asset('/js/jquery.placeholder.min.js') }}"></script>
-      <script src="{{ asset('/js/gdp-data.js') }}"></script>  
-      <script src="{{ asset('/js/morris.min.js') }}"></script>
-      <script src="{{ asset('/js/sparklines.js') }}"></script>    
-      <script src="{{ asset('/js/jquery.slimscroll.min.js') }}"></script>
-      <script>
-         //knob
-         $(function() {
-           $(".knob").knob({
-             'draw' : function () { 
-               $(this.i).val(this.cv + '%')
-             }
-           })
-         });
-         
-         //carousel
-         $(document).ready(function() {
-             $("#owl-slider").owlCarousel({
-                 navigation : true,
-                 slideSpeed : 300,
-                 paginationSpeed : 400,
-                 singleItem : true
-         
-             });
-         });
-         
-         //custom select box
-         
-         $(function(){
-             $('select.styled').customSelect();
-         });
-         
-         /* ---------- Map ---------- */
-         $(function(){
-         $('#map').vectorMap({
-           map: 'world_mill_en',
-           series: {
-             regions: [{
-               values: gdpData,
-               scale: ['#000', '#000'],
-               normalizeFunction: 'polynomial'
-             }]
-           },
-           backgroundColor: '#eef3f7',
-           onLabelShow: function(e, el, code){
-             el.html(el.html()+' (GDP - '+gdpData[code]+')');
-           }
-         });
-         });
-         
-      </script>
+
    </body>
 </html>

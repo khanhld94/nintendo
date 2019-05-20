@@ -53,7 +53,8 @@ a {
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
-    outline: 0; }
+    outline: 0;
+    text-decoration: none; }
 
 h1 {
   font-size: 2em;
@@ -218,9 +219,9 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   color: #84878d;
-  font-family: "Roboto", "Open Sans", sans-serif;
+  /*font-family: "Roboto", "Open Sans", sans-serif;*/
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 800;
   line-height: normal; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -275,7 +276,7 @@ form textarea {
 
 .slider {
   position: relative;
-  margin-bottom: 30px; }
+  margin-bottom: 10px; }
   .slider .slides {
     list-style: none;
     *zoom: 1; }
@@ -405,7 +406,7 @@ ul.arrow {
   list-style: none; }
   ul.arrow li {
     padding-left: 20px;
-    background: url(images/arrow.png) no-repeat 0 center;
+    background: url(/images/arrow.png) no-repeat 0 center;
     margin-bottom: 5px; }
     ul.arrow li a {
       color: #84878d;
@@ -1532,7 +1533,8 @@ ul.arrow {
 .section-title {
   font-size: 30px;
   font-size: 2em;
-  font-weight: 300; }
+  font-weight: 300; 
+  text-align: center;}
 
 .movie-schedule {
   list-style: none; }
@@ -1603,7 +1605,8 @@ ul.arrow {
     width: 16.6%;
     padding: 0 15px;
     float: left;
-    margin-bottom: 30px; }
+ /*   margin-bottom: 30px; */
+  }
     @media screen and (min-width: 991px) {
       .movie-list .movie:nth-child(6n+1) {
         clear: both; } }
@@ -1638,11 +1641,11 @@ ul.arrow {
     .movie-list .movie .movie-title {
       font-size: 24px;
       font-size: 1em;
-      font-weight: 300;
+      font-weight: 900;
       text-align: center;
       margin-bottom: 20px; }
       .movie-list .movie .movie-title a {
-        color: #84878d;
+        color: black;
         -webkit-transition: .3s ease;
                 transition: .3s ease; }
         .movie-list .movie .movie-title a:hover {
@@ -1690,7 +1693,7 @@ ul.arrow {
     width: 100%;
     border: 1px solid #bec1c8;
     background-color: transparent;
-    background-image: url(images/arrow.png);
+    background-image: url(/images/arrow.png);
     background-repeat: no-repeat;
     background-position: right center;
     color: inherit;

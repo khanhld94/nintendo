@@ -17,8 +17,16 @@
                         <form action="{!! route('admin.system.store') !!}" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
-                               <label>Name</label>
+                               <label>Name (en)</label>
                                <input class="form-control" name="name" placeholder="Please Enter System Name" />
+                            </div>
+                            <div class="form-group">
+                               <label>Name (ja)</label>
+                               <input class="form-control" name="japanese_name" placeholder="Please Enter System Name" />
+                            </div>
+                            <div class="form-group">
+                               <label>Full Name</label>
+                               <input class="form-control" name="fullname" placeholder="Please Enter System Full Name" />
                             </div>
                             <div class="form-group">
                                <label>System Description</label>

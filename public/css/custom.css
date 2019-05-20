@@ -3,6 +3,9 @@
     src: url('/fonts/Fipps-Regular.otf');
 }
 
+@icon-font-path {
+  src: url('/fonts/');
+}
 /* home page */
 
 .modal-content{
@@ -11,8 +14,7 @@
 .game-tab {
 	margin-left: 12px;
 }
-#top_game {
-}
+
 #top_game_image {
 	width: 80px;
 	height: 60px;
@@ -24,6 +26,13 @@
 	max-width: 100%;
 	height: 100%;
 	max-height: 100%;
+}
+
+#top_game img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
 }
 #top_game_title {
 	padding-top: 10px;
@@ -47,20 +56,22 @@
     margin: 20px auto;
     padding: 5px 0 0px 10px;
 }
-.game-content {
-    background-image: url('/dummy/tv.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    width: 695px;
-    height: 550px;
-    display: block;
-    margin: 0px auto;
-    padding: 5px 0 0px 10px;
-}
-#emulator {
-    margin-top: 27px;
-    margin-left: 29px;
-}
+  
+  /* nes - snes game page */
+  .gb-game-content {
+      background-image: url('/dummy/tv.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 695px;
+      height: 550px;
+      display: block;
+      margin: 0px auto;
+      padding: 5px 0 0px 10px;
+  }
+  #gb-emulator {
+      margin-top: 27px;
+      margin-left: 29px;
+  }
 .description{
     width: 695px;
     height: auto;
@@ -82,12 +93,29 @@
 
 .content_title {
     background: #222222;
-    width: 1104px;
+    width: 100%;
     height: 53px;
     margin-bottom: 15px;
     text-align: center;
     font-family: fipps;
     color: white;
+}
+
+.top_breakcum {
+  font-family: fipps;
+  display: inline;
+  margin-left: 25px;
+}
+.top_breakcum img {
+  width: 50px;
+  height: 50px;
+}
+
+#popover {
+  margin-right: 5px;
+}
+.content {
+  margin-top: 10px;
 }
 
 /* nav bar */
@@ -117,7 +145,20 @@
   padding: 10px;
   margin: 25px 15px 25px 0;
 }
-
+/* header */
+.header-userpic {
+  height: 50px;
+  width: 50px;
+  float: left;
+  padding-bottom: 10px;
+}
+.header-userpic img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
 
 /* comment form */
 
@@ -153,3 +194,439 @@
     border-width:8px;
 }
 
+/* system game index */
+.image_container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.image_container img {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #222222;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.image_container:hover .overlay {
+  height: 50%;
+}
+
+.text {
+  white-space: nowrap; 
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  overflow: hidden;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.overlay_name {
+  white-space: nowrap; 
+  color: #84878d;
+  font-size: 13px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.overlay_like {
+  font-size: 13px;
+  position: absolute;
+  overflow: hidden;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.popover{
+    max-width:1000px !important;
+}
+.game_tip {
+  width: 100px;
+  height: 100px;
+}
+.game_tip img {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+/* new game */
+
+
+.box {
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 10px 25px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+}
+.box-icon {
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: table;
+    height: 100px;
+    margin: 0 auto;
+    width: 100px;
+    margin-top: -61px;
+}
+.box-icon span {
+    color: #fff;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.info > p {
+    color: #717171;
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: justify;
+}
+.info > a {
+    background-color: #03a9f4;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+.info > a:hover {
+    background-color: #0288d1;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: all 0.5s ease 0s;
+}
+
+.open > .dropdown-menu {
+  opacity: 1;
+  font-weight: 800;
+}
+
+/* social button */
+
+.social-buttons {
+    position: fixed;
+    top: 180px;
+    width: 45px;
+    z-index: 9999;
+}
+.button-left {
+    left: 0;
+}
+.button-right {
+    right: 0;
+}
+.social-buttons #twitter-btn .social-icon,
+.social-buttons #facebook-btn .social-icon,
+.social-buttons #google-btn .social-icon,
+.social-buttons #rss-btn .social-icon,
+.social-buttons #pinterest-btn .social-icon,
+.social-buttons #youtube-btn .social-icon {
+    background-color: #33353B;
+    background-image: url('/images/mas-icons-namkna-blogspot-com.png');
+}
+.button-left #facebook-btn span {
+    background-position: right 10px;
+}
+.button-left #twitter-btn span {
+    background-position: right -35px;
+}
+.button-left #google-btn span {
+    background-position: right -127px;
+}
+.button-left #rss-btn span {
+    background-position: right -80px;
+}
+.button-left #pinterest-btn span {
+    background-position: 11px -177px;
+}
+.button-left #youtube-btn span {
+    background-position: 11px -223px;
+}
+.button-right #facebook-btn span {
+    background-position: 12px 10px;
+}
+.button-right #twitter-btn span {
+    background-position: 11px -35px;
+}
+.button-right #google-btn span {
+    background-position: 10px -127px;
+}
+.button-right #rss-btn span {
+    background-position: 11px -80px;
+}
+.button-right #pinterest-btn span {
+    background-position: 11px -177px;
+}
+.button-right #youtube-btn span {
+    background-position: 11px -223px;
+}
+.social-buttons #facebook-btn:hover .social-icon {
+    background-color: #3B5998;
+}
+.social-buttons #twitter-btn:hover .social-icon {
+    background-color: #62BDB2;
+}
+.social-buttons #google-btn:hover .social-icon {
+    background-color: #DB4A39;
+}
+.social-buttons #rss-btn:hover .social-icon {
+    background-color: #FF8B0F;
+}
+.social-buttons #pinterest-btn:hover .social-icon {
+    background-color: #D43638;
+}
+.social-buttons #youtube-btn:hover .social-icon {
+    background-color: #C4302B;
+}
+/*.social-buttons a:hover .social-text {
+    width: 100%;
+    display: block;
+}*/
+.button-left .social-icon {
+    -moz-transition: background-color 0.4s ease-in 0s;
+    -webkit-transition: background-color 0.4s ease-in 0s;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 43px;
+    margin-bottom: 2px;
+    width: 43px;
+}
+.button-left .social-text {
+    display: none;
+    float: right;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 11px 40px 11px 0px;
+    white-space: nowrap;
+}
+.button-right .social-icon {
+    -moz-transition: background-color 0.4s ease-in 0s;
+    -webkit-transition: background-color 0.4s ease-in 0s;
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    height: 43px;
+    margin-bottom: 2px;
+    width: 43px;
+}
+.button-right .social-text {
+    display: none;
+    float: left;
+    font-size: 80%;
+    font-weight: bold;
+    margin: 11px 0 11px 40px;
+    white-space: nowrap;
+}
+.social-buttons .social-text {
+    color: #FFFFFF;
+}
+
+/* bookmark */
+.bookmark{
+/*  display:block !important;*/
+  font-size: 50px;
+  cursor:pointer;
+  vertical-align:middle;
+  margin-right: 10px;
+  /*color:#91918b;
+  position: absolute !important;
+  right:0px !important;
+  top: 5px !important;
+  z-index: 1 !important;
+  width: 40px;*/
+}
+
+.bookmarked{
+  color:#f44242;
+}
+.unbookmark{
+  color:#91918b;
+}
+.bookmark:hover{
+  color:#f44242;
+}
+
+/* tag */
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.tags li {
+  float: left; 
+}
+
+.tag {
+ background: #714f4f;
+ border-radius: 3px 0 0 3px;
+ color: #f9f9f9;
+ display: inline-block;
+ height: 26px;
+ line-height: 26px;
+ padding: 0 20px 0 23px;
+ position: relative;
+ margin: 0 10px 10px 0;
+ text-decoration: none;
+-webkit-transition: color 0.2s;
+}
+
+.tag::before {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.tag::after {
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.tag:hover::after {
+   border-left-color: crimson; 
+}
+
+/* filters */
